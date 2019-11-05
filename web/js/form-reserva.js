@@ -7,6 +7,7 @@ $(document).ready(() => {
         }
     })
 
+    // ****************************************************
 
     // Eventos da parte de hóspedes do formulário
     $('#hospedesInput').on('keypress', e => {
@@ -46,5 +47,39 @@ $(document).ready(() => {
 
         atualizarInputHospedes()
     }
+
+    // ****************************************************
+    $('#enderecoEstado').on('input', () => { $('#enderecoEstado').val($('#enderecoEstado').val().toUpperCase()) })
+    $('#paganteRG').on('input', () => { $('#paganteRG').val($('#paganteRG').val().toUpperCase()) })
+    
+    $('#enderecoCEP').on('input', () => { 
+        const cep = $('#enderecoCEP').val()
+
+        if (cep && cep.length === 8) {
+            // Pesquisar CEP e auto preencher caso encontrado
+            $.ajax({
+                url: `https://viacep.com.br/ws/${cep}/json/`,
+                success: data => {
+                    console.log('Dados do CEP recebidos:', data)
+
+                    // if (data.erro) {
+                    if (!data.erro) {
+                        $('#enderecoCEP').removeClass('is-valid')
+                    //     $('#enderecoCEP').addClass('is-invalid')
+                    // } else {
+                    //     $('#enderecoCEP').removeClass('is-invalid')
+                    //     $('#enderecoCEP').addClass('is-valid')
+                    } else return
+                    
+                    $('#enderecoEstado').val(data.uf)
+                    $('#enderecoBairro').val(data.bairro)
+                    $('#enderecoLogradouro').val(data.logradouro)
+                    $('#enderecoCidade').val(data.localidade)
+                    $('#enderecoComplemento').val(data.complemento)
+                },
+                error: (xhr, ajaxOptions, thrownError) => console.log
+            })
+        }
+    })
 
 })
