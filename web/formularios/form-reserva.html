@@ -198,7 +198,7 @@
                       <!-- form start -->
                       <div class="card-body">
                         <div class="form-group">
-                          <div class="select2-gray">
+                          <div class="select2-gray w-100">
                             <select id="quartos" name="quartos" class="select2-blue w-100" multiple="multiple"
                               data-placeholder="Selecione os quartos" required>
                             </select>
@@ -280,8 +280,7 @@
                               <label for="paganteRG">RG</label><span class="text-danger text-bold">
                                 *</span>
                               <div class="input-group">
-                                <input id="paganteRG" name="paganteRG" type="text" class="form-control float-right"
-                                  required>
+                                <input id="paganteRG" name="paganteRG" type="text" class="form-control float-right" required>
                               </div>
                             </div>
                           </div>
@@ -301,6 +300,133 @@
 
                         </div>
                         <!-- /.row -->
+
+                        <div class="row">
+
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="paganteEmail">Email</label><span class="text-danger text-bold">
+                                *</span>
+                              <div class="input-group">
+                                <input id="paganteEmail" name="paganteEmail" type="text"
+                                  class="form-control float-right" required>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- /.col -->
+
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="paganteTelefone">Telefone</label><span class="text-danger text-bold">
+                                *</span>
+                              <div class="input-group">
+                                <input id="paganteTelefone" name="paganteTelefone" type="text"
+                                  class="form-control float-right" required>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- /.col -->
+
+                        </div>
+                        <!-- /.row -->
+
+                        <hr class="">
+
+                        <h5>Endereço</h5>
+
+                        <div class="row">
+
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label for="enderecoCEP">CEP</label><span class="text-danger text-bold">
+                                *</span>
+                              <div class="input-group">
+                                <input id="enderecoCEP" name="enderecoCEP" type="text" class="form-control float-right"
+                                  required>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- /.col -->
+
+                          <div class="col-md-2">
+                            <div class="form-group">
+                              <label for="enderecoEstado">Estado</label><span class="text-danger text-bold">
+                                *</span>
+                              <div class="input-group">
+                                <input id="enderecoEstado" name="enderecoEstado" type="text"
+                                  class="form-control float-right" maxlength="2" required>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- /.col -->
+
+                          <div class="col-md-7">
+                            <div class="form-group">
+                              <label for="enderecoCidade">Cidade</label><span class="text-danger text-bold">
+                                *</span>
+                              <div class="input-group">
+                                <input id="enderecoCidade" name="enderecoCidade" type="text"
+                                  class="form-control float-right" required>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- /.col -->
+
+                        </div>
+                        <!-- /.row -->
+
+                        <div class="row">
+
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="enderecoBairro">Bairro</label><span class="text-danger text-bold">
+                                *</span>
+                              <div class="input-group">
+                                <input id="enderecoBairro" name="enderecoBairro" type="text"
+                                  class="form-control float-right" required>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- /.col -->
+
+                          <div class="col-md-8">
+                            <div class="form-group">
+                              <label for="enderecoLogradouro">Logradouro</label><span class="text-danger text-bold">
+                                *</span>
+                              <div class="input-group">
+                                <input id="enderecoLogradouro" name="enderecoLogradouro" type="text"
+                                  class="form-control float-right" required>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- /.col -->
+
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label for="enderecoNumero">Número</label><span class="text-danger text-bold">
+                                *</span>
+                              <div class="input-group">
+                                <input id="enderecoNumero" name="enderecoNumero" type="text"
+                                  class="form-control float-right" minlength="10" maxlength="10" required>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- /.col -->
+
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="enderecoComplemento">Complemento</label>
+                              <div class="input-group">
+                                <input id="enderecoComplemento" name="enderecoComplemento" type="text"
+                                  class="form-control float-right">
+                              </div>
+                            </div>
+                          </div>
+                          <!-- /.col -->
+
+                        </div>
+                        <!-- /.row -->
+
                       </div>
                       <!-- /.card-body -->
 
@@ -321,7 +447,7 @@
                       <div class="card-body">
                         <div class="row">
 
-                          <div class="col-md-5">
+                          <div class="col-md-12">
                             <div class="form-group">
                               <label for="cartaoNumero">Número</label><span class="text-danger text-bold">
                                 *</span>
@@ -343,7 +469,7 @@
 
                         <div class="row">
 
-                          <div class="col-md-3">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <label for="cartaoDataEmissao">Data de Emissão</label><span class="text-danger text-bold">
                                 *</span>
@@ -355,7 +481,7 @@
                           </div>
                           <!-- /.col -->
 
-                          <div class="col-md-3">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <label for="cartaoDataValidade">Data de Validade</label><span
                                 class="text-danger text-bold">
@@ -368,7 +494,7 @@
                           </div>
                           <!-- /.col -->
 
-                          <div class="col-md-4">
+                          <div class="col-md-2">
                           </div>
                           <!-- /.col -->
 
@@ -475,6 +601,8 @@
         locale: { format: 'DD/MM/YYYY hh:mm A', separator: ' - ', applyLabel: 'Aplicar', cancelLabel: 'Cancelar', fromLabel: 'De', toLabel: 'Até', customRangeLabel: 'Custom', daysOfWeek: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'], monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'], firstDay: 0 }
       })
 
+      // ****************************************************
+
       // Inicialização dos select de quartos
       $.ajax({
         url: '../quartos/listar',
@@ -499,34 +627,66 @@
         }
       })
 
+      // ****************************************************
+
+      $('#paganteRG').inputmask('text', {
+        mask: '99.999.999-9|X',
+        rightAlign: false,
+        autoUnmask: true,
+        removeMaskOnSubmit: true
+      })
+
+      $('#paganteCPF').inputmask('text', {
+        mask: '999.999.999-99',
+        rightAlign: false,
+        autoUnmask: true,
+        removeMaskOnSubmit: true
+      })
+
+      $('#paganteEmail').inputmask('email', {
+        rightAlign: false
+      })
+
+      $('#paganteTelefone').inputmask('text', {
+        mask: '(99) 99999-9999',
+        rightAlign: false,
+        autoUnmask: true,
+        removeMaskOnSubmit: true
+      })
+
+      $('#enderecoCEP').inputmask('text', {
+        mask: '99999-999',
+        autoUnmask: true,
+        removeMaskOnSubmit: true
+      })
+
+      // ****************************************************
+
       $('#cartaoNumero').inputmask('text', {
         mask: '9999 9999 9999 9999',
         rightAlign: false,
         autoUnmask: true,
         removeMaskOnSubmit: true
-      });
+      })
 
-      $('#cartaoDataEmissao').inputmask("datetime", {
+      $('#cartaoDataEmissao').inputmask('datetime', {
         mask: "99/99",
-        placeholder: "mm/aa",
-        autoUnmask: true,
-        removeMaskOnSubmit: true
-      });
+        placeholder: "mm/aa"
+      })
 
-      $('#cartaoDataValidade').inputmask("datetime", {
+      $('#cartaoDataValidade').inputmask('datetime', {
         mask: "99/99",
-        placeholder: "mm/aa",
-        autoUnmask: true,
-        removeMaskOnSubmit: true
-      });
+        placeholder: "mm/aa"
+      })
 
       $('#cartaoCodigoSeguranca').inputmask('decimal', {
         mask: '999',
         rightAlign: false,
         autoUnmask: true,
         removeMaskOnSubmit: true
-      });
+      })
 
+      // ****************************************************
 
       toastr.options = {
         closeButton: true,
