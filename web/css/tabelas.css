@@ -1,0 +1,10 @@
+/* Centraliza o fa icon que está dentro do item da tabela */
+table td.item_icone {
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Centraliza todas as tabelas horizontalmente */
+.card {
+    margin: 0 auto; 
+}
