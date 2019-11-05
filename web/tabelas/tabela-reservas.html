@@ -254,6 +254,7 @@
   <!-- DataTables -->
   <script src="../vendors/admin-lte/plugins/datatables/jquery.dataTables.js"></script>
   <script src="../vendors/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+  <script src="../vendors/admin-lte/plugins/datatables-plugins/date-eu.js"></script>
   <!-- Toastr -->
   <script src="../vendors/admin-lte/plugins/toastr/toastr.min.js"></script>
   <!-- AdminLTE App -->
@@ -272,7 +273,8 @@
             targets: [0, 8], // Colunas de: [Editar, Excluir]
             searchable: false,
             orderable: false
-          }
+          },
+          { type: 'date-eu', targets: [1, 2] }
         ],
 
         // Internacionalização Português-Brasil - https://datatables.net/plug-ins/i18n/Portuguese-Brasil
