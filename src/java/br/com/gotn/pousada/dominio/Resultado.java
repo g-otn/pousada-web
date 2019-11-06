@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Resultado {
 
-    private HashMap<String, String> mensagens;
+    private String mensagens;
     private List<EntidadeDominio> entidades;
 
     // *****************************************************************************************
@@ -20,11 +20,11 @@ public class Resultado {
 
     // *****************************************************************************************
     
-    public HashMap<String, String> getMensagens() {
+    public String getMensagens() {
         return mensagens;
     }
 
-    public void setMensagens(HashMap<String, String> mensagens) {
+    public void setMensagens(String mensagens) {
         this.mensagens = mensagens;
     }
 
