@@ -1,39 +1,39 @@
 package br.com.gotn.pousada.dominio;
 
 public class Cidade {
-  
-  private String descricao;
 
-  private Estado estado;
-  
-  // *****************************************************************************************
+    private String descricao;
 
-  public Cidade(String descricao, Estado estado) {
-    this.descricao = descricao;
-    this.estado = estado;
-  }
-  
-  // *****************************************************************************************
-  
-  public String getDescricao() {
-    return descricao;
-  }
+    private Estado estado;
 
-  public void setDescricao(String descricao) {
-    this.descricao = descricao;
-  }
+    // *****************************************************************************************
+    
+    public Cidade(String descricao, Estado estado) {
+        this.descricao = descricao;
+        this.estado = estado;
+    }
 
-  public Estado getEstado() {
-    return estado;
-  }
+    // *****************************************************************************************
+    
+    public String getDescricao() {
+        return descricao;
+    }
 
-  public void setEstado(Estado estado) {
-    this.estado = estado;
-  }
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
-  @Override
-  public String toString() {
-    return descricao;
-  }
-  
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return descricao;
+    }
+
 }

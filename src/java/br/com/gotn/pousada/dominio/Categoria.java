@@ -1,43 +1,43 @@
 package br.com.gotn.pousada.dominio;
 
 public class Categoria extends EntidadeDominio {
-  
-  private String descricao;
-  private double precoDiaria;
-  private String capacidade;
-  
-  // *****************************************************************************************
 
-  public Categoria(String descricao, double precoDiaria, String capacidade) {
-    this.descricao = descricao;
-    this.precoDiaria = precoDiaria;
-    this.capacidade = capacidade;
-  }
-  
-  // *****************************************************************************************
+    private String descricao;
+    private double precoDiaria;
+    private String capacidade;
 
-  public String getDescricao() {
-    return descricao;
-  }
+    // *****************************************************************************************
+    
+    public Categoria(String descricao, double precoDiaria, String capacidade) {
+        this.descricao = descricao;
+        this.precoDiaria = precoDiaria;
+        this.capacidade = capacidade;
+    }
 
-  public void setDescricao(String descricao) {
-    this.descricao = descricao;
-  }
+    // *****************************************************************************************
+    
+    public String getDescricao() {
+        return descricao;
+    }
 
-  public double getPrecoDiaria() {
-    return precoDiaria;
-  }
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
-  public void setPrecoDiaria(double precoDiaria) {
-    this.precoDiaria = precoDiaria;
-  }
+    public double getPrecoDiaria() {
+        return precoDiaria;
+    }
 
-  public String getCapacidade() {
-    return capacidade;
-  }
+    public void setPrecoDiaria(double precoDiaria) {
+        this.precoDiaria = precoDiaria;
+    }
 
-  public void setCapacidade(String capacidade) {
-    this.capacidade = capacidade;
-  }
-  
+    public String getCapacidade() {
+        return capacidade;
+    }
+
+    public void setCapacidade(String capacidade) {
+        this.capacidade = capacidade;
+    }
+
 }

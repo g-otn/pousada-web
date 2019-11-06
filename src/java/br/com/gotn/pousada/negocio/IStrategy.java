@@ -4,6 +4,6 @@ import br.com.gotn.pousada.dominio.EntidadeDominio;
 
 public interface IStrategy {
 
-  public String processar(EntidadeDominio entidade);
+    public String processar(EntidadeDominio entidade);
 
 }

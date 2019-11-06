@@ -10,73 +10,73 @@ package br.com.gotn.pousada.dominio;
  * @author User
  */
 public class Pagante extends Pessoa {
-  
-  private String rg;
-  private String cpf;
-  private String email;
-  private String telefone;
-  private Endereco endereco;
-  private Cartao cartao;  
-  
-  // *****************************************************************************************
 
-  public Pagante(String rg, String cpf, String email, String telefone, Endereco endereco, Cartao cartao) {
-    this.rg = rg;
-    this.cpf = cpf;
-    this.email = email;
-    this.telefone = telefone;
-    this.endereco = endereco;
-    this.cartao = cartao;
-  }
-  
-  // *****************************************************************************************
+    private String rg;
+    private String cpf;
+    private String email;
+    private String telefone;
+    private Endereco endereco;
+    private Cartao cartao;
 
-  public String getRg() {
-    return rg;
-  }
+    // *****************************************************************************************
+    
+    public Pagante(String rg, String cpf, String email, String telefone, Endereco endereco, Cartao cartao) {
+        this.rg = rg;
+        this.cpf = cpf;
+        this.email = email;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.cartao = cartao;
+    }
 
-  public void setRg(String rg) {
-    this.rg = rg;
-  }
+    // *****************************************************************************************
+    
+    public String getRg() {
+        return rg;
+    }
 
-  public String getCpf() {
-    return cpf;
-  }
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
 
-  public void setCpf(String cpf) {
-    this.cpf = cpf;
-  }
+    public String getCpf() {
+        return cpf;
+    }
 
-  public String getEmail() {
-    return email;
-  }
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
+    public String getEmail() {
+        return email;
+    }
 
-  public String getTelefone() {
-    return telefone;
-  }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-  public void setTelefone(String telefone) {
-    this.telefone = telefone;
-  }
+    public String getTelefone() {
+        return telefone;
+    }
 
-  public Endereco getEndereco() {
-    return endereco;
-  }
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 
-  public void setEndereco(Endereco endereco) {
-    this.endereco = endereco;
-  }
+    public Endereco getEndereco() {
+        return endereco;
+    }
 
-  public Cartao getCartao() {
-    return cartao;
-  }
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 
-  public void setCartao(Cartao cartao) {
-    this.cartao = cartao;
-  }
-  
+    public Cartao getCartao() {
+        return cartao;
+    }
+
+    public void setCartao(Cartao cartao) {
+        this.cartao = cartao;
+    }
+
 }

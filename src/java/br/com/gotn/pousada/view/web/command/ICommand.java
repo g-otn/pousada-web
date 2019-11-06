@@ -5,6 +5,6 @@ import br.com.gotn.pousada.dominio.Resultado;
 
 public interface ICommand {
 
-  public Resultado executar(EntidadeDominio entidadeDominio);
+    public Resultado executar(EntidadeDominio entidadeDominio);
 
 }
