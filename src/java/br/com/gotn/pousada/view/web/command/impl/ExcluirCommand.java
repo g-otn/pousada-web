@@ -7,9 +7,9 @@ import br.com.gotn.pousada.view.web.command.ICommand;
 public class ExcluirCommand extends AbstractCommand {
 
     @Override
-    public Resultado executar(EntidadeDominio entidadeDominio) {
+    public Resultado executar(EntidadeDominio entidade) {
         System.out.println("--> ExcluirCommand#executar");
-        return fachada.excluir(entidadeDominio);
+        return fachada.excluir(entidade);
     }
     
 }

@@ -7,9 +7,9 @@ import br.com.gotn.pousada.view.web.command.ICommand;
 public class AlterarCommand extends AbstractCommand {
 
     @Override
-    public Resultado executar(EntidadeDominio entidadeDominio) {
+    public Resultado executar(EntidadeDominio entidade) {
         System.out.println("--> AlterarCommand#executar");
-        return fachada.alterar(entidadeDominio);
+        return fachada.alterar(entidade);
     }
     
 }

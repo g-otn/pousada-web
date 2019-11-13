@@ -6,9 +6,9 @@ import br.com.gotn.pousada.dominio.Resultado;
 public class ConsultarCommand extends AbstractCommand {
 
     @Override
-    public Resultado executar(EntidadeDominio entidadeDominio) {
+    public Resultado executar(EntidadeDominio entidade) {
         System.out.println("--> ConsultarCommand#executar");
-        return fachada.consultar(entidadeDominio);
+        return fachada.consultar(entidade);
     }
     
 }
