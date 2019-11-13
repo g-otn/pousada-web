@@ -4,10 +4,11 @@ import br.com.gotn.pousada.dominio.EntidadeDominio;
 import br.com.gotn.pousada.dominio.Quarto;
 import br.com.gotn.pousada.negocio.IStrategy;
 
-public class ValidaDadosQuarto implements IStrategy {
+public class ValidarDadosQuarto implements IStrategy {
 
     @Override
     public String processar(EntidadeDominio entidade) {
+        System.out.println("ValidarDadosQuarto#processar");
         Quarto quarto = (Quarto) entidade;
         StringBuilder msg = new StringBuilder();
         
