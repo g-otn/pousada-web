@@ -18,9 +18,9 @@ public class ValidarDatasCartao implements IStrategy {
         StringBuilder sb = new StringBuilder();
         
         // Validar intervalo entre datas
-        if (dataEmissaoYearMonth.isAfter(dataValidadeYearMonth)) {
+        if (dataEmissao.isAfter(dataValidade)) {
             sb.append("cartaoDataEmissao: O intervalo entre as datas é inválido\n");
-        } else if (dataValidadeYearMonth.isBefore(YearMonth.now())) {
+        } else if (dataValidade.isBefore(YearMonth.now())) {
             sb.append("cartaoDataValidade: O cartão está vencido\n");
         }
         
