@@ -10,7 +10,7 @@ public class ValidarCPF implements IStrategy {
     @Override
     public String processar(EntidadeDominio entidade) {
         System.out.println("ValidarCPF#processar");
-        String cpf = reserva = ((Reserva) entidade).getPagante().getCpf();
+        String cpf = ((Reserva) entidade).getPagante().getCpf();
         StringBuilder sb = new StringBuilder();
 
         if (cpf == null || cpf.length() != 11 || !ehCPF(cpf)) {
