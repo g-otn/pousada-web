@@ -1,7 +1,8 @@
 package br.com.gotn.pousada.dominio;
 
-import java.time.LocalDate;
 import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class Cartao extends EntidadeDominio {
 
@@ -11,6 +12,22 @@ public class Cartao extends EntidadeDominio {
     private String codigoSeguranca;
 
     // *****************************************************************************************
+    
+    public Cartao(String numero, String dataEmissaoString, String dataValidadeString, String codigoSeguranca) {
+        this.numero = numero;
+        try {
+            dataEmissao = YearMonth.parse(dataEmissaoString, DateTimeFormatter.ofPattern("MM/yy"));
+        } catch (DateTimeParseException e) {
+            dataEmissao = null;
+        }
+        try {
+            dataValidade = YearMonth.parse(dataValidadeString, DateTimeFormatter.ofPattern("MM/yy"));
+        } catch (DateTimeParseException e) {
+            dataValidade = null;
+        }
+        this.codigoSeguranca = codigoSeguranca;
+    }
+    
     public Cartao(String numero, YearMonth dataEmissao, YearMonth dataValidade, String codigoSeguranca) {
         this.numero = numero;
         this.dataEmissao = dataEmissao;
