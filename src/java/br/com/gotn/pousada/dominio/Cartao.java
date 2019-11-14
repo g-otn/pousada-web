@@ -1,17 +1,15 @@
 package br.com.gotn.pousada.dominio;
 
-import java.time.LocalDate;
-
 public class Cartao extends EntidadeDominio {
 
     private String numero;
-    private LocalDate dataEmissao;
-    private LocalDate dataValidade;
+    private String dataEmissao;
+    private String dataValidade;
     private String codigoSeguranca;
 
     // *****************************************************************************************
     
-    public Cartao(String numero, LocalDate dataEmissao, LocalDate dataValidade, String codigoSeguranca) {
+    public Cartao(String numero, String dataEmissao, String dataValidade, String codigoSeguranca) {
         this.numero = numero;
         this.dataEmissao = dataEmissao;
         this.dataValidade = dataValidade;
@@ -19,7 +17,6 @@ public class Cartao extends EntidadeDominio {
     }
 
     // *****************************************************************************************
-    
     public String getNumero() {
         return numero;
     }
@@ -28,19 +25,19 @@ public class Cartao extends EntidadeDominio {
         this.numero = numero;
     }
 
-    public LocalDate getDataEmissao() {
+    public String getDataEmissao() {
         return dataEmissao;
     }
 
-    public void setDataEmissao(LocalDate dataEmissao) {
+    public void setDataEmissao(String dataEmissao) {
         this.dataEmissao = dataEmissao;
     }
 
-    public LocalDate getDataValidade() {
+    public String getDataValidade() {
         return dataValidade;
     }
 
-    public void setDataValidade(LocalDate dataValidade) {
+    public void setDataValidade(String dataValidade) {
         this.dataValidade = dataValidade;
     }
 
