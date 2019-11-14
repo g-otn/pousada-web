@@ -1,26 +1,25 @@
 package br.com.gotn.pousada.negocio.impl.quarto;
 
+import br.com.gotn.pousada.dominio.Categoria;
 import br.com.gotn.pousada.dominio.EntidadeDominio;
 import br.com.gotn.pousada.dominio.Quarto;
 import br.com.gotn.pousada.negocio.IStrategy;
 
-public class ValidarDadosQuarto implements IStrategy {
+public class ValidarCategoriaQuarto implements IStrategy {
 
     @Override
     public String processar(EntidadeDominio entidade) {
-        System.out.println("ValidarDadosQuarto#processar");
-        Quarto quarto = (Quarto) entidade;
-        StringBuilder msg = new StringBuilder();
+        System.out.println("ValidarCategoriaQuarto#processar");
+        Categoria categoria = ((Quarto) entidade).getCategoria();
+        StringBuilder sb = new StringBuilder();
         
-        if (quarto.getNumero() == null || quarto.getNumero().trim().isEmpty()) {
-            msg.append("numero: O número do quarto é obrigatório\n");
+        if (categoria == null || categoria.getId() == 0L) {
+            sb.append("categoria: A categoria é obrigatória\n");
+        } else {
+            // TODO: Verificar existência com DAO
         }
         
-        if (quarto.getCategoria() == null || quarto.getCategoria().getId() == 0) {
-            msg.append("categoria: A categoria do quarto é obrigatória\n");
-        }
-        
-        return msg.toString();
+        return sb.toString();
     }
     
 }
