@@ -1,34 +1,15 @@
 package br.com.gotn.pousada.dominio;
 
-import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-
 public class Cartao extends EntidadeDominio {
 
     private String numero;
-    private YearMonth dataEmissao;
-    private YearMonth dataValidade;
+    private String dataEmissao;
+    private String dataValidade;
     private String codigoSeguranca;
 
     // *****************************************************************************************
     
-    public Cartao(String numero, String dataEmissaoString, String dataValidadeString, String codigoSeguranca) {
-        this.numero = numero;
-        try {
-            dataEmissao = YearMonth.parse(dataEmissaoString, DateTimeFormatter.ofPattern("MM/yy"));
-        } catch (DateTimeParseException e) {
-            dataEmissao = null;
-        }
-        try {
-            dataValidade = YearMonth.parse(dataValidadeString, DateTimeFormatter.ofPattern("MM/yy"));
-        } catch (DateTimeParseException e) {
-            dataValidade = null;
-        }
-        this.codigoSeguranca = codigoSeguranca;
-    }
-    
-    public Cartao(String numero, YearMonth dataEmissao, YearMonth dataValidade, String codigoSeguranca) {
+    public Cartao(String numero, String dataEmissao, String dataValidade, String codigoSeguranca) {
         this.numero = numero;
         this.dataEmissao = dataEmissao;
         this.dataValidade = dataValidade;
@@ -44,19 +25,19 @@ public class Cartao extends EntidadeDominio {
         this.numero = numero;
     }
 
-    public YearMonth getDataEmissao() {
+    public String getDataEmissao() {
         return dataEmissao;
     }
 
-    public void setDataEmissao(YearMonth dataEmissao) {
+    public void setDataEmissao(String dataEmissao) {
         this.dataEmissao = dataEmissao;
     }
 
-    public YearMonth getDataValidade() {
+    public String getDataValidade() {
         return dataValidade;
     }
 
-    public void setDataValidade(YearMonth dataValidade) {
+    public void setDataValidade(String dataValidade) {
         this.dataValidade = dataValidade;
     }
 
