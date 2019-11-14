@@ -1,9 +1,9 @@
-package br.com.gotn.pousada.controle.fachada.impl;
+package br.com.gotn.pousada.view.web.fachada.impl;
 
 import br.com.gotn.pousada.dominio.EntidadeDominio;
 import br.com.gotn.pousada.dominio.Resultado;
 import br.com.gotn.pousada.negocio.IStrategy;
-import br.com.gotn.pousada.controle.fachada.IFachada;
+import br.com.gotn.pousada.view.web.fachada.IFachada;
 import java.util.List;
 import java.util.Map;
 

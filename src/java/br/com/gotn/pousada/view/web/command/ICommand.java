@@ -1,4 +1,4 @@
-package br.com.gotn.pousada.controle.command;
+package br.com.gotn.pousada.view.web.command;
 
 import br.com.gotn.pousada.dominio.EntidadeDominio;
 import br.com.gotn.pousada.dominio.Resultado;
