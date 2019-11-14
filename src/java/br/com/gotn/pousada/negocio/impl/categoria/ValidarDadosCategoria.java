@@ -17,7 +17,7 @@ public class ValidarDadosCategoria implements IStrategy {
         }
         
         if (categoria.getPrecoDiaria() < 0.0) {
-            sb.append("precoDiaria: O preço da diária é inválido");
+            sb.append("precoDiaria: O preço da diária é inválido\n");
         }
         
         return sb.toString();

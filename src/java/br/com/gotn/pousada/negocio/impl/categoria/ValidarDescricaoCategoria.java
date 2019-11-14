@@ -13,9 +13,9 @@ public class ValidarDescricaoCategoria implements IStrategy {
         StringBuilder sb = new StringBuilder();
         
         if (categoria.getDescricao() == null || categoria.getDescricao().trim().isEmpty()) {
-            sb.append("descricao: A descrição é obrigatória");
+            sb.append("descricao: A descrição é obrigatória\n");
         } else {
-            // TODO: Verificar existência com DAO
+            // TODO: Verificar repetido com DAO
         }
         
         return sb.toString();
