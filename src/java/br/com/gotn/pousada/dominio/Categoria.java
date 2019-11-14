@@ -4,11 +4,11 @@ public class Categoria extends EntidadeDominio {
 
     private String descricao;
     private double precoDiaria;
-    private String capacidade;
+    private int capacidade;
 
     // *****************************************************************************************
     
-    public Categoria(String descricao, double precoDiaria, String capacidade) {
+    public Categoria(String descricao, double precoDiaria, int capacidade) {
         this.descricao = descricao;
         this.precoDiaria = precoDiaria;
         this.capacidade = capacidade;
@@ -32,11 +32,11 @@ public class Categoria extends EntidadeDominio {
         this.precoDiaria = precoDiaria;
     }
 
-    public String getCapacidade() {
+    public int getCapacidade() {
         return capacidade;
     }
 
-    public void setCapacidade(String capacidade) {
+    public void setCapacidade(int capacidade) {
         this.capacidade = capacidade;
     }
 
