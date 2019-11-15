@@ -13,7 +13,9 @@ public class ValidarCPF implements IStrategy {
         String cpf = ((Reserva) entidade).getPagante().getCpf();
         StringBuilder sb = new StringBuilder();
 
-        if (cpf == null || cpf.length() != 11 || !ehCPF(cpf)) {
+        if (cpf == null || cpf.trim().isEmpty()) {
+            sb.append("paganteCPF: O CPF é obrigatório\n");
+        } else if (cpf.length() != 11 || !ehCPF(cpf)) {
             sb.append("paganteCPF: O CPF é inválido\n");
         }
         
