@@ -12,37 +12,13 @@ public class ValidarDatasCartao implements IStrategy {
     @Override
     public String processar(EntidadeDominio entidade) {
         System.out.println("ValidarDatasCartao#processar");
-        String dataEmissao = ((Reserva) entidade).getPagante().getCartao().getDataEmissao();
-        String dataValidade = ((Reserva) entidade).getPagante().getCartao().getDataValidade();
+        YearMonth dataEmissao = ((Reserva) entidade).getPagante().getCartao().getDataEmissao();
+        YearMonth dataValidade = ((Reserva) entidade).getPagante().getCartao().getDataValidade();
         
         StringBuilder sb = new StringBuilder();
         
-        YearMonth dataEmissaoYearMonth = null;
-        YearMonth dataValidadeYearMonth = null;
-        
-        if (dataEmissao == null) {
-            sb.append("cartaoDataEmissao: A data de emissão é obrigatória\n");
-        } else {
-            try {
-                dataEmissaoYearMonth = YearMonth.parse(dataEmissao, DateTimeFormatter.ofPattern("MM/yy"));
-            } catch (DateTimeParseException e) {
-                sb.append("cartaoDataEmissao: A data de emissão é inválida\n");
-            }
-        }
-        
-        if (dataValidade == null) {
-            sb.append("cartaoDataValidade: A data de validade é obrigatória\n");
-        } else {
-            try {
-                dataValidadeYearMonth = YearMonth.parse(dataValidade, DateTimeFormatter.ofPattern("MM/yy"));
-            } catch (DateTimeParseException e) {
-                sb.append("cartaoDataValidade: A data de validade é inválida\n");
-            }
-        }
-        
-        // Validar intervalo entre datas inválido
-        if (dataEmissaoYearMonth != null && dataValidadeYearMonth != null && 
-                dataEmissaoYearMonth.isAfter(dataValidadeYearMonth)) {
+        // Validar intervalo entre datas
+        if (dataEmissaoYearMonth.isAfter(dataValidadeYearMonth)) {
             sb.append("cartaoDataEmissao: O intervalo entre as datas é inválido\n");
         } else if (dataValidadeYearMonth.isBefore(YearMonth.now())) {
             sb.append("cartaoDataValidade: O cartão está vencido\n");
