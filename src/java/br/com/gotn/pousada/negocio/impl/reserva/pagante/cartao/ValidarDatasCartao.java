@@ -4,8 +4,6 @@ import br.com.gotn.pousada.dominio.EntidadeDominio;
 import br.com.gotn.pousada.dominio.Reserva;
 import br.com.gotn.pousada.negocio.IStrategy;
 import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 
 public class ValidarDatasCartao implements IStrategy {
 
@@ -14,17 +12,27 @@ public class ValidarDatasCartao implements IStrategy {
         System.out.println("ValidarDatasCartao#processar");
         YearMonth dataEmissao = ((Reserva) entidade).getPagante().getCartao().getDataEmissao();
         YearMonth dataValidade = ((Reserva) entidade).getPagante().getCartao().getDataValidade();
-        
+
         StringBuilder sb = new StringBuilder();
-        
-        // Validar intervalo entre datas
-        if (dataEmissao.isAfter(dataValidade)) {
-            sb.append("cartaoDataEmissao: O intervalo entre as datas é inválido\n");
-        } else if (dataValidade.isBefore(YearMonth.now())) {
-            sb.append("cartaoDataValidade: O cartão está vencido\n");
+
+        if (dataEmissao == null) {
+            sb.append("cartaoDataEmissao: A data de emissão é obrigatória\n");
         }
-        
+
+        if (dataValidade == null) {
+            sb.append("cartaoDataValidade: A data de validade é obrigatória\n");
+        }
+
+        if (sb.length() == 0) {
+            // Validar intervalo entre datas
+            if (dataEmissao.isAfter(dataValidade)) {
+                sb.append("cartaoDataEmissao: O intervalo entre as datas é inválido\n");
+            } else if (dataValidade.isBefore(YearMonth.now())) {
+                sb.append("cartaoDataValidade: O cartão está vencido\n");
+            }
+        }
+
         return sb.toString();
     }
-    
+
 }
