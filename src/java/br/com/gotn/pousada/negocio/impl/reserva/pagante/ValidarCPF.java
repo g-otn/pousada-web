@@ -18,7 +18,7 @@ public class ValidarCPF implements IStrategy {
         } else if (cpf.length() != 11 || !ehCPF(cpf)) {
             sb.append("paganteCPF: O CPF é inválido\n");
         }
-        
+
         return sb.toString();
     }
 
@@ -43,7 +43,7 @@ public class ValidarCPF implements IStrategy {
             sm = 0;
             peso = 10;
             for (i = 0; i < 9; i++) {
-        // converte o i-esimo caractere do CPF em um numero:
+                // converte o i-esimo caractere do CPF em um numero:
                 // por exemplo, transforma o caractere '0' no inteiro 0         
                 // (48 eh a posicao de '0' na tabela ASCII)         
                 num = (int) (CPF.charAt(i) - 48);
@@ -82,6 +82,7 @@ public class ValidarCPF implements IStrategy {
         } catch (InputMismatchException erro) {
             return (false);
         }
+        // https://www.devmedia.com.br/validando-o-cpf-em-uma-aplicacao-java/22097
     }
 
 }
