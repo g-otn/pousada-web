@@ -5,6 +5,15 @@ public class EntidadeDominio {
     private long id;
 
     // *****************************************************************************************
+
+    public EntidadeDominio() {
+    }
+
+    public EntidadeDominio(long id) {
+        this.id = id;
+    }
+
+    // *****************************************************************************************
     
     public long getId() {
         return id;

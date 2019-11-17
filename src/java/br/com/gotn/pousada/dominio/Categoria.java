@@ -8,6 +8,10 @@ public class Categoria extends EntidadeDominio {
 
     // *****************************************************************************************
     
+    public Categoria(long id) {
+        super(id);
+    }
+    
     public Categoria(String descricao, double precoDiaria, int capacidade) {
         this.descricao = descricao;
         this.precoDiaria = precoDiaria;

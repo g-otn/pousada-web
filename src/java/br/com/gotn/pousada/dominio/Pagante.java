@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.gotn.pousada.dominio;
 
-/**
- *
- * @author User
- */
 public class Pagante extends Pessoa {
 
     private String rg;
@@ -20,7 +11,12 @@ public class Pagante extends Pessoa {
 
     // *****************************************************************************************
     
-    public Pagante(String rg, String cpf, String email, String telefone, Endereco endereco, Cartao cartao) {
+    public Pagante(long id) {
+        super(id);
+    }
+    
+    public Pagante(String nome, String rg, String cpf, String email, String telefone, Endereco endereco, Cartao cartao) {
+        super(nome);
         this.rg = rg;
         this.cpf = cpf;
         this.email = email;

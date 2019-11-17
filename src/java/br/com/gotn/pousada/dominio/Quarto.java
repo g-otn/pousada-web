@@ -7,6 +7,10 @@ public class Quarto extends EntidadeDominio {
 
     // *****************************************************************************************
     
+    public Quarto(long id) {
+        super(id);
+    }
+    
     public Quarto(String numero, Categoria categoria) {
         this.numero = numero;
         this.categoria = categoria;

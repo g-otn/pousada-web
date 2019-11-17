@@ -11,6 +11,10 @@ public class Endereco extends EntidadeDominio {
 
     // *****************************************************************************************
     
+    public Endereco(long id) {
+        super(id);
+    }
+    
     public Endereco(String bairro, String logradouro, String numero, String complemento, String cep, Cidade cidade) {
         this.bairro = bairro;
         this.logradouro = logradouro;

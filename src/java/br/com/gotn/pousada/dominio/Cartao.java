@@ -11,6 +11,10 @@ public class Cartao extends EntidadeDominio {
 
     // *****************************************************************************************
     
+    public Cartao(long id) {
+        super(id);
+    }
+    
     public Cartao(String numero, YearMonth dataEmissao, YearMonth dataValidade, String codigoSeguranca) {
         this.numero = numero;
         this.dataEmissao = dataEmissao;

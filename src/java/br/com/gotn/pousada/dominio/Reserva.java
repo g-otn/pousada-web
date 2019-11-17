@@ -15,6 +15,10 @@ public class Reserva extends EntidadeDominio {
 
     // *****************************************************************************************
     
+    public Reserva(long id) {
+        super(id);
+    }
+    
     public Reserva(LocalDateTime dataCheckIn, LocalDateTime dataCheckOut, String observacoes, List<Pessoa> pessoas, Pagante pagante, List<Quarto> quartos) {
         this.dataCheckIn = dataCheckIn;
         this.dataCheckOut = dataCheckOut;

@@ -6,6 +6,16 @@ public class Pessoa extends EntidadeDominio {
 
     // *****************************************************************************************
     
+    public Pessoa(long id) {
+        super(id);
+    }
+    
+    public Pessoa(String nome) {
+        this.nome = nome;
+    }
+
+    // *****************************************************************************************
+    
     public String getNome() {
         return nome;
     }
