@@ -34,4 +34,9 @@ public class Quarto extends EntidadeDominio {
         this.categoria = categoria;
     }
 
+    @Override
+    public String toString() {
+        return "Quarto{id=" + getId() + ", numero=" + numero + ", categoria=" + categoria + '}';
+    }
+
 }

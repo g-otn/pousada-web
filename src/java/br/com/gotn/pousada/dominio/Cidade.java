@@ -33,7 +33,7 @@ public class Cidade {
 
     @Override
     public String toString() {
-        return descricao;
-    }
+        return "Cidade{" + "descricao=" + descricao + ", estado=" + estado + '}';
+    }    
 
 }

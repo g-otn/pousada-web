@@ -92,4 +92,9 @@ public class Reserva extends EntidadeDominio {
         this.quartos = quartos;
     }
 
+    @Override
+    public String toString() {
+        return "Reserva{id=" + getId() + ", dataCheckIn=" + dataCheckIn + ", dataCheckOut=" + dataCheckOut + ", observacoes=" + observacoes + ", pessoas=" + pessoas + ", pagante=" + pagante + ", quartos=" + quartos + '}';
+    }
+
 }

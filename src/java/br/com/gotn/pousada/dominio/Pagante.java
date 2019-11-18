@@ -75,4 +75,9 @@ public class Pagante extends Pessoa {
         this.cartao = cartao;
     }
 
+    @Override
+    public String toString() {
+        return "Pagante{id=" + getId() + ", rg=" + rg + ", cpf=" + cpf + ", email=" + email + ", telefone=" + telefone + ", endereco=" + endereco + ", cartao=" + cartao + '}';
+    }
+
 }

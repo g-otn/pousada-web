@@ -22,7 +22,7 @@ public class Estado {
 
     @Override
     public String toString() {
-        return descricao;
+        return "Estado{" + "descricao=" + descricao + '}';
     }
 
 }

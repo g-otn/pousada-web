@@ -44,4 +44,9 @@ public class Categoria extends EntidadeDominio {
         this.capacidade = capacidade;
     }
 
+    @Override
+    public String toString() {
+        return "Categoria{id=" + getId() + ", descricao=" + descricao + ", precoDiaria=" + precoDiaria + ", capacidade=" + capacidade + '}';
+    }
+
 }

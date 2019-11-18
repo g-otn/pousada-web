@@ -74,4 +74,9 @@ public class Endereco extends EntidadeDominio {
         this.cidade = cidade;
     }
 
+    @Override
+    public String toString() {
+        return "Endereco{id=" + getId() + ", bairro=" + bairro + ", logradouro=" + logradouro + ", numero=" + numero + ", complemento=" + complemento + ", cep=" + cep + ", cidade=" + cidade + '}';
+    }
+
 }

@@ -24,4 +24,9 @@ public class Pessoa extends EntidadeDominio {
         this.nome = nome;
     }
 
+    @Override
+    public String toString() {
+        return "Pessoa{id=" + getId() + ", nome=" + nome + '}';
+    }
+    
 }

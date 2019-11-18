@@ -55,4 +55,11 @@ public class Cartao extends EntidadeDominio {
         this.codigoSeguranca = codigoSeguranca;
     }
 
+    @Override
+    public String toString() {
+        return "Cartao{id=" + getId() + ", numero=" + numero + ", dataEmissao=" + dataEmissao + ", dataValidade=" + dataValidade + ", codigoSeguranca=" + codigoSeguranca + '}';
+    }
+    
+    
+
 }
