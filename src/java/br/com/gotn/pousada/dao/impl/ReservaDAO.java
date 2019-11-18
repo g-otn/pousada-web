@@ -8,22 +8,22 @@ public class ReservaDAO implements IDAO {
 
     @Override
     public void salvar(EntidadeDominio entidadeDominio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("--> ReservaDAO#salvar");
     }
 
     @Override
     public void alterar(EntidadeDominio entidadeDominio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("--> ReservaDAO#alterar");
     }
 
     @Override
     public void excluir(EntidadeDominio entidadeDominio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("--> ReservaDAO#excluir");
     }
 
     @Override
     public List<EntidadeDominio> consultar(EntidadeDominio entidadeDominio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("--> ReservaDAO#consultar");
     }
     
 }

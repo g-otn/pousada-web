@@ -8,22 +8,22 @@ public class EnderecoDAO implements IDAO {
 
     @Override
     public void salvar(EntidadeDominio entidadeDominio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("--> EnderecoDAO#salvar");
     }
 
     @Override
     public void alterar(EntidadeDominio entidadeDominio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("--> EnderecoDAO#alterar");
     }
 
     @Override
     public void excluir(EntidadeDominio entidadeDominio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("--> EnderecoDAO#excluir");
     }
 
     @Override
     public List<EntidadeDominio> consultar(EntidadeDominio entidadeDominio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("--> EnderecoDAO#consultar");
     }
     
 }
