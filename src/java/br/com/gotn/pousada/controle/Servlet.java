@@ -29,14 +29,18 @@ public class Servlet extends HttpServlet {
         // Inicializando mapas
         viewHelperMap = new HashMap<>();
         commandMap = new HashMap<>();
+
+        // *****************************************************************************************
         
         // Mapeando commands para suas respectivas operações
         commandMap.put("salvar", new SalvarCommand());
         commandMap.put("alterar", new AlterarCommand());
         commandMap.put("excluir", new ExcluirCommand());
         commandMap.put("consultar", new ConsultarCommand());
+
+        // *****************************************************************************************
         
-        // Mapeando viewHelpers para os seus respecitivos caminhos
+        // Mapeando viewHelpers para os seus respectivos caminhos
         viewHelperMap.put("/reservas", new ReservaVH());
         viewHelperMap.put("/quartos", new QuartoVH());
         viewHelperMap.put("/categorias", new CategoriaVH());
@@ -50,9 +54,17 @@ public class Servlet extends HttpServlet {
 
         // Retorna a operação desejada (salvar, excluir, alterar ou consultar)
         String operacao = request.getParameter("operacao");
-
+        
+        // *****************************************************************************************
+        
         // Retorna a viewHelper designada para o caminho da requisição
         IViewHelper viewHelper = viewHelperMap.get(caminho);
+        
+        // Caminho não maepado (não encontrado em viewHelperMap)
+        if (viewHelper == null) {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND); // HTTP 404
+            return;
+        }
 
         // Retorna a entidade instanciada e preenchida com os dados enviados na requisição
         EntidadeDominio entidade = viewHelper.getEntidade(request);
@@ -64,11 +76,15 @@ public class Servlet extends HttpServlet {
         if (command == null) {
             response.setStatus(422); // HTTP 422: Entidade improcessável (Sintaxe correta porém dados inválidos (operação inválida))
             return;
-        } 
+        }
+        
+        // *****************************************************************************************
         
         // Retorna o resultado da entidade que foi executada e processada
         Resultado resultado = command.executar(entidade);
 
+        // *****************************************************************************************
+        
         // Envia o resultado para a viewHelper que continuará o tratamento da requisição e enviará uma resposta
         viewHelper.setView(resultado, request, response);
     }
