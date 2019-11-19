@@ -29,7 +29,7 @@ $(document).ready(() => {
         botaoRemover.click((e) => { removerHospede(e.delegateTarget) })
         const hospedeLi = $(`
             <li class="list-group-item">
-                <input type="hidden" name="hospedes[]" value="${novoHospede}"/>${novoHospede}
+                <input type="hidden" name="hospedes" value="${novoHospede}"/>${novoHospede}
             </li>
         `)
         hospedeLi.prepend(botaoRemover)
