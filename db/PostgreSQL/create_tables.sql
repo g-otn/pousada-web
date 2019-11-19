@@ -35,7 +35,7 @@ CREATE TABLE pousada.pagantes
 (
     id bigserial PRIMARY KEY,
     nome character varying(150) NOT NULL,
-    rg character(9) NOT NULL,
+    rg character varying(14) NOT NULL,
     cpf character(11) NOT NULL,
     email character varying(150) NOT NULL,
     telefone character varying(15) NOT NULL,

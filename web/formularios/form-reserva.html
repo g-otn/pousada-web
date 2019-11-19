@@ -280,7 +280,7 @@
                               <label for="paganteRG">RG</label><span class="text-danger text-bold">
                                 *</span>
                               <div class="input-group">
-                                <input id="paganteRG" name="paganteRG" type="text" class="form-control float-right" required>
+                                <input id="paganteRG" name="paganteRG" type="text" class="form-control float-right" maxlength="14" required>
                               </div>
                             </div>
                           </div>
@@ -629,12 +629,12 @@
 
       // ****************************************************
 
-      $('#paganteRG').inputmask('text', {
-        mask: '99.999.999-9|X',
-        rightAlign: false,
-        autoUnmask: true,
-        removeMaskOnSubmit: true
-      })
+      // $('#paganteRG').inputmask('text', {
+      //   mask: '99.999.999-9|X',
+      //   rightAlign: false,
+      //   autoUnmask: true,
+      //   removeMaskOnSubmit: true
+      // })
 
       $('#paganteCPF').inputmask('text', {
         mask: '999.999.999-99',

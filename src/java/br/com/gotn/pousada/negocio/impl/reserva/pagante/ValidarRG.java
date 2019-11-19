@@ -14,7 +14,7 @@ public class ValidarRG implements IStrategy {
 
         if (rg == null || rg.trim().isEmpty()) {
             sb.append("paganteRG: O RG é obrigatório\n");
-        } else if (rg.length() != 9) {
+        } else if (rg.length() > 14 || rg.length() < 8) {
             sb.append("paganteRG: O RG é inválido\n");
         } else {
             try {
