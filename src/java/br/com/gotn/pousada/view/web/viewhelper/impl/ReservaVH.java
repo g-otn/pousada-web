@@ -3,13 +3,18 @@ package br.com.gotn.pousada.view.web.viewhelper.impl;
 import br.com.gotn.pousada.dominio.Cartao;
 import br.com.gotn.pousada.dominio.Categoria;
 import br.com.gotn.pousada.dominio.Cidade;
+import br.com.gotn.pousada.dominio.Endereco;
 import br.com.gotn.pousada.dominio.EntidadeDominio;
+import br.com.gotn.pousada.dominio.Estado;
+import br.com.gotn.pousada.dominio.Pagante;
 import br.com.gotn.pousada.dominio.Pessoa;
 import br.com.gotn.pousada.dominio.Quarto;
 import br.com.gotn.pousada.dominio.Reserva;
 import br.com.gotn.pousada.dominio.Resultado;
 import br.com.gotn.pousada.view.web.viewhelper.IViewHelper;
 import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.Year;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -78,14 +83,45 @@ public class ReservaVH implements IViewHelper {
             String enderecoComplemento = request.getParameter("enderecoComplemento") != null ? request.getParameter("enderecoComplemento").trim() : null;
             String enderecoCEP = request.getParameter("enderecoCEP") != null ? request.getParameter("enderecoCEP").trim() : null;
             String enderecoCidade = request.getParameter("enderecoCidade") != null ? request.getParameter("enderecoCidade").trim() : null;
+            String enderecoEstado = request.getParameter("enderecoEstado") != null ? request.getParameter("enderecoEstado").trim() : null;
             
             // Reserva.pagante.cartao
             String cartaoNumero = request.getParameter("cartaoNumero") != null ? request.getParameter("cartaoNumero").trim() : null;
-            YearMonth cartaoDataEmissao;
-            YearMonth cartaoDataValidade;
+            YearMonth cartaoDataEmissao, cartaoDataValidade;
+            try {
+                cartaoDataEmissao = YearMonth.parse(request.getParameter("cartaoDataEmissao"), DateTimeFormatter.ofPattern("MM/yy"));
+            } catch (DateTimeParseException e) {
+                cartaoDataEmissao = YearMonth.of(Year.MIN_VALUE, 1); // Ano -999,999,999, marcado como inválido na validação
+            }
+            try {
+                cartaoDataValidade = YearMonth.parse(request.getParameter("cartaoDataValidade"), DateTimeFormatter.ofPattern("MM/yy"));
+            } catch (DateTimeParseException e) {
+                cartaoDataValidade = YearMonth.of(Year.MIN_VALUE, 1); // Ano -999,999,999, marcado como inválido na validação
+            }
             String cartaoCodigoSeguranca = request.getParameter("cartaoCodigoSeguranca") != null ? request.getParameter("cartaoCodigoSeguranca").trim() : null;
+            
+            // Reserva.quartos
+            List<Quarto> quartos = new ArrayList<>();
+            try {
+                String[] quartoIdStrings = request.getParameterValues("quartos");
+                for (String quartoIdString : quartoIdStrings) {
+                    quartos.add(new Quarto(Long.parseLong(quartoIdString)));
+                }
+            } catch (NumberFormatException e) {
+                quartos = null;
+            }
+            if (quartos != null && quartos.isEmpty()) {
+                quartos = null;
+            }
+            
+            Cartao cartao = new Cartao(cartaoNumero, cartaoDataEmissao, cartaoDataValidade, cartaoCodigoSeguranca);
+            Estado estado = new Estado(enderecoEstado);
+            Cidade cidade = new Cidade(enderecoCidade, estado);
+            Endereco endereco = new Endereco(enderecoBairro, enderecoLogradouro, enderecoNumero, enderecoComplemento, enderecoCEP, cidade);
+            Pagante pagante = new Pagante(paganteNome, paganteRg, paganteCpf, paganteEmail, paganteTelefone, endereco, cartao);
 
             // Entidade a ser retornada
+            Reserva reserva = new Reserva(dataCheckIn, dataCheckOut, observacoes, pessoas, pagante, quartos);
             System.out.println(reserva);
             return reserva;
         }
@@ -93,7 +129,89 @@ public class ReservaVH implements IViewHelper {
         // *****************************************************************************************
         
         if (operacao.equals("alterar")) {
+            // Parse nas datas que veem concatenadas ("dataCheckIn - dataCheckOut")
+            String datasConcatenadas = request.getParameter("dataCheckInOut");
+            String[] datas = datasConcatenadas.split("-");
 
+            // Reserva.dataCheckIn, Reserva.dataCheckOut
+            LocalDateTime dataCheckIn, dataCheckOut;
+            try {
+                dataCheckIn = LocalDateTime.parse(datas[0].trim(), DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm a"));
+                dataCheckOut = LocalDateTime.parse(datas[1].trim(), DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm a"));
+            } catch (NullPointerException | DateTimeParseException e) {
+                dataCheckIn = null;
+                dataCheckOut = null;
+            }
+
+            // Reserva.observacoes
+            String observacoes = request.getParameter("observacoes");
+
+            // Reserva.pessoas
+            List<Pessoa> pessoas = new ArrayList<>();
+            try {
+                String[] pessoasNomes = request.getParameterValues("hospedes");
+                for (String pessoaNome : pessoasNomes) {
+                    pessoas.add(new Pessoa(pessoaNome));
+                }
+            } catch (Exception e) {
+                pessoas = null;
+            }
+            if (pessoas != null && pessoas.isEmpty()) {
+                pessoas = null;
+            }
+
+            // Reserva.pagante
+            String paganteNome = request.getParameter("paganteNome") != null ? request.getParameter("paganteNome").trim() : null;
+            String paganteRg = request.getParameter("paganteRg") != null ? request.getParameter("paganteRg").trim() : null;
+            String paganteCpf = request.getParameter("paganteCpf") != null ? request.getParameter("paganteCpf").trim() : null;
+            String paganteEmail = request.getParameter("paganteEmail") != null ? request.getParameter("paganteEmail").trim() : null;
+            String paganteTelefone = request.getParameter("paganteTelefone") != null ? request.getParameter("paganteTelefone").trim() : null;
+
+            // Reserva.pagante.endereco
+            String enderecoBairro = request.getParameter("enderecoBairro") != null ? request.getParameter("enderecoBairro").trim() : null;
+            String enderecoLogradouro = request.getParameter("enderecoLogradouro") != null ? request.getParameter("enderecoLogradouro").trim() : null;
+            String enderecoNumero = request.getParameter("enderecoNumero") != null ? request.getParameter("enderecoNumero").trim() : null;
+            String enderecoComplemento = request.getParameter("enderecoComplemento") != null ? request.getParameter("enderecoComplemento").trim() : null;
+            String enderecoCEP = request.getParameter("enderecoCEP") != null ? request.getParameter("enderecoCEP").trim() : null;
+            String enderecoCidade = request.getParameter("enderecoCidade") != null ? request.getParameter("enderecoCidade").trim() : null;
+            String enderecoEstado = request.getParameter("enderecoEstado") != null ? request.getParameter("enderecoEstado").trim() : null;
+            
+            // Reserva.pagante.cartao
+            String cartaoNumero = request.getParameter("cartaoNumero") != null ? request.getParameter("cartaoNumero").trim() : null;
+            YearMonth cartaoDataEmissao, cartaoDataValidade;
+            try {
+                cartaoDataEmissao = YearMonth.parse(request.getParameter("cartaoDataEmissao"), DateTimeFormatter.ofPattern("MM/yy"));
+            } catch (DateTimeParseException e) {
+                cartaoDataEmissao = YearMonth.of(Year.MIN_VALUE, 1); // Ano -999,999,999, marcado como inválido na validação
+            }
+            try {
+                cartaoDataValidade = YearMonth.parse(request.getParameter("cartaoDataValidade"), DateTimeFormatter.ofPattern("MM/yy"));
+            } catch (DateTimeParseException e) {
+                cartaoDataValidade = YearMonth.of(Year.MIN_VALUE, 1); // Ano -999,999,999, marcado como inválido na validação
+            }
+            String cartaoCodigoSeguranca = request.getParameter("cartaoCodigoSeguranca") != null ? request.getParameter("cartaoCodigoSeguranca").trim() : null;
+            
+            // Reserva.quartos
+            List<Quarto> quartos = new ArrayList<>();
+            try {
+                String[] quartoIdStrings = request.getParameterValues("quartos");
+                for (String quartoIdString : quartoIdStrings) {
+                    quartos.add(new Quarto(Long.parseLong(quartoIdString)));
+                }
+            } catch (NumberFormatException e) {
+                quartos = null;
+            }
+            if (quartos != null && quartos.isEmpty()) {
+                quartos = null;
+            }
+            
+            Cartao cartao = new Cartao(cartaoNumero, cartaoDataEmissao, cartaoDataValidade, cartaoCodigoSeguranca);
+            Estado estado = new Estado(enderecoEstado);
+            Cidade cidade = new Cidade(enderecoCidade, estado);
+            Endereco endereco = new Endereco(enderecoBairro, enderecoLogradouro, enderecoNumero, enderecoComplemento, enderecoCEP, cidade);
+            Pagante pagante = new Pagante(paganteNome, paganteRg, paganteCpf, paganteEmail, paganteTelefone, endereco, cartao);
+            Reserva reserva = new Reserva(dataCheckIn, dataCheckOut, observacoes, pessoas, pagante, quartos);
+            
             // Reserva.id
             long idReserva;
             try {
