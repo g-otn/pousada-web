@@ -16,7 +16,7 @@ public class ConexaoPostgresSQL {
     private static final String PORT = "5432";
     private static final String URL = "jdbc:postgresql://" + IP + ":" + PORT + "/" + DATABASE_NAME;
 
-    public static Connection getConection() throws ClassNotFoundException, SQLException {
+    public static Connection getConnection() throws ClassNotFoundException, SQLException {
         System.out.println("--> ConexaoPostgresSQL#getConection");
 
         Class.forName(DRIVER);
