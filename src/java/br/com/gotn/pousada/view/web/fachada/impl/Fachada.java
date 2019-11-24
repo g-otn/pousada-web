@@ -10,7 +10,6 @@ import br.com.gotn.pousada.dominio.Quarto;
 import br.com.gotn.pousada.dominio.Reserva;
 import br.com.gotn.pousada.dominio.Resultado;
 import br.com.gotn.pousada.negocio.IStrategy;
-import br.com.gotn.pousada.negocio.impl.ValidarId;
 import br.com.gotn.pousada.negocio.impl.categoria.ValidarDadosCategoria;
 import br.com.gotn.pousada.negocio.impl.categoria.ValidarDescricaoCategoria;
 import br.com.gotn.pousada.negocio.impl.quarto.ValidarCategoriaQuarto;
