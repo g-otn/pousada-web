@@ -2,7 +2,8 @@ CREATE TABLE pousada.categorias
 (
     id bigserial PRIMARY KEY,
     descricao character varying(150) NOT NULL,
-    capacidade integer NOT NULL
+    capacidade integer NOT NULL,
+    preco_diaria double precision NOT NULL
 );
 
 CREATE TABLE pousada.quartos
