@@ -33,8 +33,8 @@ public class CategoriaDAO extends AbstractDAO {
 
         try {
             PreparedStatement ps = conexao.prepareStatement("INSERT INTO " + tabela
-                + "(descricao, capacidade, preco_diaria)"
-                + "VALUES (?, ?, ?)"
+                + " (descricao, capacidade, preco_diaria)"
+                + " VALUES (?, ?, ?)"
             );
             ps.setString(1, categoria.getDescricao());
             ps.setInt(2, categoria.getCapacidade());
@@ -59,8 +59,8 @@ public class CategoriaDAO extends AbstractDAO {
             PreparedStatement ps = conexao.prepareStatement("UPDATE " + tabela + " SET "
                 + "descricao = ?,"
                 + "capacidade = ?,"
-                + "preco_diaria = ? "
-                + "WHERE " + colunaId + " = ?"
+                + "preco_diaria = ?"
+                + " WHERE " + colunaId + " = ?"
             );
             ps.setString(1, categoria.getDescricao());
             ps.setInt(2, categoria.getCapacidade());
