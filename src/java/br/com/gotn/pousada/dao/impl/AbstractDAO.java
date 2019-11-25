@@ -39,6 +39,16 @@ public abstract class AbstractDAO implements IDAO {
             e.printStackTrace();
         }
     }
+    
+    protected void fecharConexao() {
+        try {
+            if (conexao != null && !conexao.isClosed()) {
+                conexao.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     // Como o AbstractDAO já possuí os nomes da tabela e da coluna do id e o id da entidade, não é preciso implementar nos outros DAOs a operação de excluir
     @Override
@@ -52,6 +62,8 @@ public abstract class AbstractDAO implements IDAO {
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            fecharConexao();
         }
     }
 

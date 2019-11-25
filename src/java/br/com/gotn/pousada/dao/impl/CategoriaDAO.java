@@ -37,12 +37,13 @@ public class CategoriaDAO extends AbstractDAO {
             ps.setString(1, categoria.getDescricao());
             ps.setInt(2, categoria.getCapacidade());
             ps.setDouble(3, categoria.getPrecoDiaria());
+            
             System.out.println(ps);
             ps.executeUpdate();
-            
-            conexao.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            fecharConexao();
         }
     }
 
@@ -63,12 +64,13 @@ public class CategoriaDAO extends AbstractDAO {
             ps.setInt(2, categoria.getCapacidade());
             ps.setDouble(3, categoria.getPrecoDiaria());
             ps.setLong(4, categoria.getId());
+            
             System.out.println(ps);
             ps.executeUpdate();
-            
-            conexao.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            fecharConexao();
         }
     }
 
@@ -106,10 +108,10 @@ public class CategoriaDAO extends AbstractDAO {
                 Categoria categoriaConsultada = new Categoria(rs.getString("descricao"), rs.getDouble("preco_diaria"), rs.getInt("capacidade"));
                 categoriasConsultadas.add(categoriaConsultada);
             }
-            
-            conexao.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            fecharConexao();
         }
         
         System.out.println("A consulta retornou " + categoriasConsultadas.size() + " resultado(s)" + (categoriasConsultadas.size() == 1 ? ": " + categoriasConsultadas.get(0).toString() : ""));
