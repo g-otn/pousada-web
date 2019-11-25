@@ -108,6 +108,7 @@ public class CategoriaDAO extends AbstractDAO {
             
             while (rs.next()) {
                 Categoria categoriaConsultada = new Categoria(rs.getString("descricao"), rs.getDouble("preco_diaria"), rs.getInt("capacidade"));
+                categoriaConsultada.setId(rs.getLong(colunaId));
                 categoriasConsultadas.add(categoriaConsultada);
             }
         } catch (SQLException e) {
