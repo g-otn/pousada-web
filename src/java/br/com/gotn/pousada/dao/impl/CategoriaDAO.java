@@ -15,12 +15,12 @@ public class CategoriaDAO extends AbstractDAO {
         super("categorias", "id");
     }
 
-    public CategoriaDAO(String tabela, String colunaId) {
-        super(tabela, colunaId);
+    public CategoriaDAO(Connection conexao) {
+        super(conexao);
     }
 
-    public CategoriaDAO(Connection conexao, String tabela, String colunaId) {
-        super(conexao, tabela, colunaId);
+    public CategoriaDAO(String tabela, String colunaId) {
+        super(tabela, colunaId);
     }
 
     @Override
