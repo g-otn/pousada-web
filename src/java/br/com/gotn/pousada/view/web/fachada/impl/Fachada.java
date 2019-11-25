@@ -162,6 +162,7 @@ public class Fachada implements IFachada {
             dao.salvar(entidade);
         } else {
             System.out.println("=== " + sb.toString().split("\n").length + " erros de validação encontrados!");
+            System.out.println(sb.toString());
             resultado.setMensagens(sb.toString());
         }
         
@@ -187,7 +188,8 @@ public class Fachada implements IFachada {
             IDAO dao = daoMap.get(nomeClasse);
             dao.alterar(entidade);
         } else {
-            System.out.println("=== " + sb.toString().split("\n").length + " erros de validação encontrados!");
+            System.out.println("=== " + sb.toString().split("\n").length + " erros de validação encontrados:");
+            System.out.println(sb.toString());
             resultado.setMensagens(sb.toString());
         }
         
