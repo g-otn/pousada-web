@@ -89,7 +89,7 @@ public class CartaoDAO extends AbstractDAO {
         try {
             PreparedStatement ps;
             
-            if (cartao.getId() != 0L) { // id -> consulta de cartao único
+            if (cartao.getId() != -1L) { // id -> consulta de cartao único
                 ps = conexao.prepareStatement("SELECT * FROM " + tabela + " WHERE id = ? ");
                 ps.setLong(1, cartao.getId());
             } else { // nada -> listagem

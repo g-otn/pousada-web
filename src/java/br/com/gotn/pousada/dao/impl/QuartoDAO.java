@@ -85,7 +85,7 @@ public class QuartoDAO extends AbstractDAO {
             PreparedStatement ps;
             
             if (quarto.getNumero() != null) {
-                if (quarto.getId() != 0L) { // descricao e id -> verificação de número já existente fora o próprio cadastro
+                if (quarto.getId() != -1L) { // descricao e id -> verificação de número já existente fora o próprio cadastro
                     ps = conexao.prepareStatement("SELECT * FROM " + tabela + " WHERE id <> ? AND numero = ?");
                     ps.setLong(1, quarto.getId());
                     ps.setString(2, quarto.getNumero());
@@ -93,7 +93,7 @@ public class QuartoDAO extends AbstractDAO {
                     ps = conexao.prepareStatement("SELECT * FROM " + tabela + " WHERE descricao = ?");
                     ps.setString(1, quarto.getNumero());
                 }
-            } else if (quarto.getId() != 0L) { // id -> consulta de quarto único
+            } else if (quarto.getId() != -1L) { // id -> consulta de quarto único
                 ps = conexao.prepareStatement("SELECT * FROM " + tabela + " WHERE id = ? ");
                 ps.setLong(1, quarto.getId());
             } else { // nada -> listagem

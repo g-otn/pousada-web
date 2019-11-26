@@ -74,7 +74,7 @@ public class CategoriaVH implements IViewHelper {
             try {
                 idCategoria = Long.parseLong(request.getParameter("idCategoria"));
             } catch (NumberFormatException e) {
-                idCategoria = 0;
+                idCategoria = -1L;
             }
             
             // Entidade a ser retornada
@@ -91,7 +91,7 @@ public class CategoriaVH implements IViewHelper {
             try {
                 idCategoria = Long.parseLong(request.getParameter("idCategoria"));
             } catch (NumberFormatException e) {
-                idCategoria = 0;
+                idCategoria = -1L;
             }
             
             // Entidade a ser retornada
@@ -108,7 +108,7 @@ public class CategoriaVH implements IViewHelper {
             try {
                 idCategoria = Long.parseLong(request.getParameter("idCategoria"));
             } catch (NumberFormatException e) {
-                idCategoria = 0;
+                idCategoria = -1L;
             }
             
             // Entidade a ser retornada

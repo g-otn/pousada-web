@@ -86,7 +86,7 @@ public class CategoriaDAO extends AbstractDAO {
             PreparedStatement ps;
             
             if (categoria.getDescricao() != null) {
-                if (categoria.getId() != 0L) { // descricao e id -> verificação de descrição já existente fora o próprio cadastro
+                if (categoria.getId() != -1L) { // descricao e id -> verificação de descrição já existente fora o próprio cadastro
                     ps = conexao.prepareStatement("SELECT * FROM " + tabela + " WHERE id <> ? AND descricao = ?");
                     ps.setLong(1, categoria.getId());
                     ps.setString(2, categoria.getDescricao());
@@ -94,7 +94,7 @@ public class CategoriaDAO extends AbstractDAO {
                     ps = conexao.prepareStatement("SELECT * FROM " + tabela + " WHERE descricao = ?");
                     ps.setString(1, categoria.getDescricao());
                 }
-            } else if (categoria.getId() != 0L) { // id -> consulta de categoria única
+            } else if (categoria.getId() != -1L) { // id -> consulta de categoria única
                 ps = conexao.prepareStatement("SELECT * FROM " + tabela + " WHERE id = ? ");
                 ps.setLong(1, categoria.getId());
             } else { // nada -> listagem

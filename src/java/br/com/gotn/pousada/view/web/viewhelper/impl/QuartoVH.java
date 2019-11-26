@@ -29,7 +29,7 @@ public class QuartoVH implements IViewHelper {
             try {
                 idCategoria = Long.parseLong(request.getParameter("idCategoria"));
             } catch (NumberFormatException e) {
-                idCategoria = -1;
+                idCategoria = -1L;
             }
             Categoria categoria = new Categoria(idCategoria);
             
@@ -50,7 +50,7 @@ public class QuartoVH implements IViewHelper {
             try {
                 idCategoria = Long.parseLong(request.getParameter("idCategoria"));
             } catch (NumberFormatException e) {
-                idCategoria = -1;
+                idCategoria = -1L;
             }
             Categoria categoria = new Categoria(idCategoria);
             
@@ -61,7 +61,7 @@ public class QuartoVH implements IViewHelper {
             try {
                 idQuarto = Long.parseLong(request.getParameter("idQuarto"));
             } catch (NumberFormatException e) {
-                idQuarto = 0;
+                idQuarto = -1L;
             }
             quarto.setId(idQuarto);
             
@@ -78,7 +78,7 @@ public class QuartoVH implements IViewHelper {
             try {
                 idQuarto = Long.parseLong(request.getParameter("idQuarto"));
             } catch (NumberFormatException e) {
-                idQuarto = 0;
+                idQuarto = -1L;
             }
             
             // Entidade a ser retornada
@@ -95,7 +95,7 @@ public class QuartoVH implements IViewHelper {
             try {
                 idQuarto = Long.parseLong(request.getParameter("idQuarto"));
             } catch (NumberFormatException e) {
-                idQuarto = 0;
+                idQuarto = -1L;
             }
             
             // Entidade a ser retornada

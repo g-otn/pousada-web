@@ -217,7 +217,7 @@ public class ReservaVH implements IViewHelper {
             try {
                 idReserva = Long.parseLong(request.getParameter("idReserva"));
             } catch (NumberFormatException e) {
-                idReserva = 0;
+                idReserva = -1L;
             }
             reserva.setId(idReserva);
 
@@ -234,7 +234,7 @@ public class ReservaVH implements IViewHelper {
             try {
                 idReserva = Long.parseLong(request.getParameter("idReserva"));
             } catch (NumberFormatException e) {
-                idReserva = 0;
+                idReserva = -1L;
             }
 
             // Entidade a ser retornada
@@ -251,7 +251,7 @@ public class ReservaVH implements IViewHelper {
             try {
                 idReserva = Long.parseLong(request.getParameter("idReserva"));
             } catch (NumberFormatException e) {
-                idReserva = 0;
+                idReserva = -1L;
             }
 
             // Entidade a ser retornada
