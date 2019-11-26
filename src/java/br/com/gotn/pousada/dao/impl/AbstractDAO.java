@@ -13,17 +13,20 @@ import java.util.logging.Logger;
 public abstract class AbstractDAO implements IDAO {
 
     protected Connection conexao;
+    private static final String BD_ESQUEMA = "pousada";
     protected String tabela;
     protected String colunaId;
 
-    // Recebe uma conexão já aberta, para quando um DAO chamar o outro
-    public AbstractDAO(Connection conexao) {
-        this.conexao = conexao;
-    }
-
     // Utilizado pelos DAOs quando o mesmo é instânciado com o construtor sem parâmetros (direto da Fachada/Strategy)
     public AbstractDAO(String tabela, String colunaId) {
-        this.tabela = tabela;
+        this.tabela = BD_ESQUEMA + tabela;
+        this.colunaId = colunaId;
+    }
+
+    // Recebe uma conexão já aberta, para quando um DAO chamar o outro
+    public AbstractDAO(Connection conexao, String tabela, String colunaId) {
+        this.conexao = conexao;
+        this.tabela = BD_ESQUEMA + tabela;
         this.colunaId = colunaId;
     }
 

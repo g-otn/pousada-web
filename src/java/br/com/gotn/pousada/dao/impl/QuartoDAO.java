@@ -17,9 +17,7 @@ public class QuartoDAO extends AbstractDAO {
     }
 
     public QuartoDAO(Connection conexao) {
-        super(conexao);
-        this.tabela = "quartos";
-        this.colunaId = "id";
+        super(conexao, "quartos", "id");
     }
 
     public QuartoDAO(String tabela, String colunaId) {

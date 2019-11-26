@@ -14,11 +14,9 @@ public class CategoriaDAO extends AbstractDAO {
     public CategoriaDAO() {
         super("categorias", "id");
     }
-
+    
     public CategoriaDAO(Connection conexao) {
-        super(conexao);
-        this.tabela = "categorias";
-        this.colunaId = "id";
+        super(conexao, "categorias", "id");
     }
 
     public CategoriaDAO(String tabela, String colunaId) {
