@@ -151,7 +151,7 @@ public class CategoriaVH implements IViewHelper {
                 if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
                     response.sendRedirect(request.getContextPath() + "/categorias");
                 } else {
-                    request.getRequestDispatcher("/formularios/form-categoria.jsp").forward(request, response);
+                    request.getRequestDispatcher("/tabelas/tabela-categorias.jsp").forward(request, response);
                 }
             }
         } catch (ServletException | IOException e) {

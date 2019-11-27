@@ -140,7 +140,7 @@ public class QuartoVH implements IViewHelper {
                 if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
                     response.sendRedirect(request.getContextPath() + "/quartos");
                 } else {
-                    request.getRequestDispatcher("/formularios/form-quarto.jsp").forward(request, response);
+                    request.getRequestDispatcher("/tabelas/tabela-quartos.jsp").forward(request, response);
                 }
             }
         } catch (ServletException | IOException e) {
