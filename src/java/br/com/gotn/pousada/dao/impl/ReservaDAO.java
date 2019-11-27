@@ -128,7 +128,7 @@ public class ReservaDAO extends AbstractDAO {
             }
             
             System.out.println(ps);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = conexao.createStatement().executeQuery(ps.toString());
             
             while (rs.next()) {
                 // Recupera todas as pessoas que pertecem a esta reserva

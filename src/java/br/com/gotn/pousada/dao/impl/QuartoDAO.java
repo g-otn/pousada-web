@@ -108,7 +108,7 @@ public class QuartoDAO extends AbstractDAO {
             }
             
             System.out.println(ps);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = conexao.createStatement().executeQuery(ps.toString());
             
             while (rs.next()) {
                 Quarto quartoConsultado = new Quarto(
