@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -6,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>Pousada | Nova Categoria</title>
+  <title>Pousada | Novo Quarto</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../vendors/admin-lte/plugins/fontawesome-free/css/all.min.css">
@@ -16,9 +17,12 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- Toastr -->
   <link rel="stylesheet" href="../vendors/admin-lte/plugins/toastr/toastr.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../vendors/admin-lte/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="../vendors/admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
   <!-- Estilos da página -->
-  <link href="../css/form-categoria.css" rel="stylesheet">
+  <link href="../css/form-quarto.css" rel="stylesheet">
 </head>
 
 <body class="hold-transition sidebar-mini sidebar-collapse">
@@ -143,58 +147,55 @@
       <!-- Main content -->
       <div class="content">
         <div class="container-fluid">
-          <h1 class="mt-5 mb-4 text-dark text-center">Nova Categoria de Quarto</h1>
+          <h1 class="mt-5 mb-4 text-dark text-center">Novo Quarto</h1>
           <div class="card">
             <div class="card-body">
               <!-- <form action="alterar" method="POST"> -->
               <form action="salvar" method="POST">
-                <label for="descricao" class="mb-0">
-                  <h5 class="mt-2 mb-2">Descrição</h5>
-                </label><span class="text-danger text-bold"> *</span>
-
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-tag"></i></span>
-                  </div>
-                  <input id="descricao" name="descricao" type="text" class="form-control" required>
-                </div>
-
-
                 <div class="row mb-2">
 
-                  <div class="col-sm-6">
-                    <label for="precoDiaria" class="mb-0">
-                      <h5 class="mt-2 mb-2">Preço da Diária</h5>
+                  <div class="col-sm-3">
+                    <label for="numero" class="mb-0">
+                      <h5 class="mt-2 mb-2">Número</h5>
                     </label><span class="text-danger text-bold"> *</span>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">R$</span>
-                      </div>
-                      <input id="precoDiaria" name="precoDiaria" type="text" class="form-control" required>
+                    <div class="input-group mb-0">
+                      <input id="numero" name="numero" type="text" class="form-control is-invalid" required>
+                      <br>
                     </div>
+                    <p class="text-danger mb-3">Erro1</p>
                   </div><!-- /.col -->
 
-                  <div class="col-sm-6">
-                    <label for="capacidade" class="mb-0">
-                      <h5 class="mt-2">Capacidade</h5>
+                  <div class="col-sm-9">
+                    <label for="categoria" class="mb-0">
+                      <h5 class="mt-2 mb-2">Categoria</h5>
                     </label><span class="text-danger text-bold"> *</span>
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-users"></i></span>
-                      </div>
-                      <input id="capacidade" name="capacidade" type="text" class="form-control" required>
-                    </div>
-                  </div><!-- /.col -->
+                    <div class="form-group">
+                      <select id="categoria" name="categoria" class="form-control" style="width: 100%;" required>
+                        <option>Alabama</option>
+                        <option>Alaska</option>
+                        <option>California</option>
+                        <option>Delaware</option>
+                        <option>Tennessee</option>
+                        <option>Texas</option>
+                        <option>Washington</option>
+                      </select>
+                      <span class="text-danger">Erro2</span>
+                    </div><!-- /.form-group -->
+                  </div>
+
                 </div><!-- /.row -->
 
                 <div class="row mt-2">
+
                   <div class="col-sm-6">
                     <button type="submit" formaction="/categorias"
                       class="btn btn-block btn-outline-danger">Voltar</button>
                   </div><!-- /.col -->
+
                   <div class="col-sm-6">
                     <button type="submit" class="btn btn-block btn-outline-primary">Cadastrar</button>
                   </div><!-- /.col -->
+
                 </div><!-- /.row -->
               </form>
             </div>
@@ -218,36 +219,36 @@
   <script src="../vendors/admin-lte/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="../vendors/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Select2 -->
+  <script src="../vendors/admin-lte/plugins/select2/js/select2.full.min.js"></script>
+  <script src="../vendors/admin-lte/plugins/select2/js/i18n/pt-BR.js"></script>
   <!-- Toastr -->
   <script src="../vendors/admin-lte/plugins/toastr/toastr.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../vendors/admin-lte/dist/js/adminlte.min.js"></script>
-
+  <!-- InputMask -->
   <script src="../vendors/admin-lte/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
 
   <!-- Aplicações iniciais dos plugins jQuery -->
   <script>
     $(document).ready(() => {
 
-      $('#precoDiaria').inputmask('currency', {
-        groupSeparator: '.',
-        digits: 2,
-        radixPoint: ',',
-        prefix: '',
-        allowMinus: false,
-        autoUnmask: true,
-        removeMaskOnSubmit: true
-      });
-      $('#capacidade').inputmask('decimal', {
-        min: 1,
-        max: 100,
-        suffix: ' pessoa(s)',
-        autoUnmask: true,
-        removeMaskOnSubmit: true
-      });
-      // $('#precoDiaria').val(2342342322)
+      $('#categoria').select2({
+        theme: 'bootstrap4',
+        language: 'pt-BR'
+      })
+
+      toastr.options = {
+        closeButton: true,
+        progressBar: true,
+        positionClass: "toast-top-center mt-3"
+      }
+
+      toastr['error']('<h4>O formulário contém erros.</h4>Corrija-os e tente novamente.')
+
 
     })
+    // $('#precoDiaria').val(2342342322)
   </script>
 </body>
 
