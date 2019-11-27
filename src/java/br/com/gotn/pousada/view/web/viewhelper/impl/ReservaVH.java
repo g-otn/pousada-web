@@ -12,6 +12,7 @@ import br.com.gotn.pousada.dominio.Quarto;
 import br.com.gotn.pousada.dominio.Reserva;
 import br.com.gotn.pousada.dominio.Resultado;
 import br.com.gotn.pousada.view.web.viewhelper.IViewHelper;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.Year;
@@ -20,6 +21,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -267,45 +269,39 @@ public class ReservaVH implements IViewHelper {
         String operacao = request.getParameter("operacao");
         
         if (operacao == null) operacao = "consultar"; // Para poder realizar consulta utilizando o menu
-
-        // *****************************************************************************************
         
-        if (operacao.equals("salvar")) {
-            if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
-                
-            } else {
-                
+        try {
+            if (operacao.equals("salvar")) {
+                if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
+                    request.setAttribute("sucesso", true);
+                    response.sendRedirect(request.getContextPath() + "/reservas");
+                } else {
+                    request.getRequestDispatcher("/formularios/form-reservas.jsp").forward(request, response);
+                }
+            } else if (operacao.equals("alterar")) {
+                if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
+                    request.setAttribute("sucesso", true);
+                    response.sendRedirect(request.getContextPath() + "/reservas");
+                } else {
+                    request.getRequestDispatcher("/formularios/form-reservas.jsp").forward(request, response);
+                }
+            } else if (operacao.equals("excluir")) {
+                if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
+                    request.setAttribute("sucesso", true);
+                    response.sendRedirect(request.getContextPath() + "/reservas");
+                } else {
+                    request.getRequestDispatcher("/formularios/form-reservas.jsp").forward(request, response);
+                }
+            } else if (operacao.equals("consultar")) {
+                if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
+                    request.setAttribute("sucesso", true);
+                    response.sendRedirect(request.getContextPath() + "/reservas");
+                } else {
+                    request.getRequestDispatcher("/formularios/form-reservas.jsp").forward(request, response);
+                }
             }
-        }
-
-        // *****************************************************************************************
-        
-        if (operacao.equals("alterar")) {
-            if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
-                
-            } else {
-                
-            }
-        }
-
-        // *****************************************************************************************
-        
-        if (operacao.equals("excluir")) {
-            if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
-                
-            } else {
-                
-            }
-        }
-
-        // *****************************************************************************************
-        
-        if (operacao.equals("consultar")) {
-            if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
-                
-            } else {
-                
-            }
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 

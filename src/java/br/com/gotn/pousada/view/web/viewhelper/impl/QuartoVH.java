@@ -5,6 +5,8 @@ import br.com.gotn.pousada.dominio.EntidadeDominio;
 import br.com.gotn.pousada.dominio.Quarto;
 import br.com.gotn.pousada.dominio.Resultado;
 import br.com.gotn.pousada.view.web.viewhelper.IViewHelper;
+import java.io.IOException;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -113,45 +115,41 @@ public class QuartoVH implements IViewHelper {
         String operacao = request.getParameter("operacao");
         
         if (operacao == null) operacao = "consultar"; // Para poder realizar consulta utilizando o menu
-
-        // *****************************************************************************************
         
-        if (operacao.equals("salvar")) {
-            if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
-                
-            } else {
-                
-            }
-        }
-
-        // *****************************************************************************************
+        request.setAttribute("resultado", resultado);
         
-        if (operacao.equals("alterar")) {
-            if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
-                
-            } else {
-                
+        try {
+            if (operacao.equals("salvar")) {
+                if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
+                    request.setAttribute("sucesso", true);
+                    response.sendRedirect(request.getContextPath() + "/quartos");
+                } else {
+                    request.getRequestDispatcher("/formularios/form-quarto.jsp").forward(request, response);
+                }
+            } else if (operacao.equals("alterar")) {
+                if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
+                    request.setAttribute("sucesso", true);
+                    response.sendRedirect(request.getContextPath() + "/quartos");
+                } else {
+                    request.getRequestDispatcher("/formularios/form-quarto.jsp").forward(request, response);
+                }
+            } else if (operacao.equals("excluir")) {
+                if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
+                    request.setAttribute("sucesso", true);
+                    response.sendRedirect(request.getContextPath() + "/quartos");
+                } else {
+                    request.getRequestDispatcher("/formularios/form-quarto.jsp").forward(request, response);
+                }
+            } else if (operacao.equals("consultar")) {
+                if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
+                    request.setAttribute("sucesso", true);
+                    response.sendRedirect(request.getContextPath() + "/quartos");
+                } else {
+                    request.getRequestDispatcher("/formularios/form-quarto.jsp").forward(request, response);
+                }
             }
-        }
-
-        // *****************************************************************************************
-        
-        if (operacao.equals("excluir")) {
-            if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
-                
-            } else {
-                
-            }
-        }
-
-        // *****************************************************************************************
-        
-        if (operacao.equals("consultar")) {
-            if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
-                
-            } else {
-                
-            }
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
     
