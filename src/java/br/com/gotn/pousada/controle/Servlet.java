@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 //@WebServlet(name = "Servlet", urlPatterns = {"/reservas/*", "/quartos/*", "/categorias/*"})
 public class Servlet extends HttpServlet {
     
+    private static final String CONTEXTO = "pousada";
     private final Map<String, ICommand> commandMap;
     private final Map<String, IViewHelper> viewHelperMap;
 
@@ -37,13 +38,16 @@ public class Servlet extends HttpServlet {
         commandMap.put("alterar", new AlterarCommand());
         commandMap.put("excluir", new ExcluirCommand());
         commandMap.put("consultar", new ConsultarCommand());
-
+        
         // *****************************************************************************************
         
         // Mapeando viewHelpers para os seus respectivos caminhos
-        viewHelperMap.put("/reservas", new ReservaVH());
-        viewHelperMap.put("/quartos", new QuartoVH());
-        viewHelperMap.put("/categorias", new CategoriaVH());
+        viewHelperMap.put("/" + CONTEXTO + "/reservas", new ReservaVH());
+        viewHelperMap.put("/" + CONTEXTO + "/quartos", new QuartoVH());
+        viewHelperMap.put("/" + CONTEXTO + "/categorias", new CategoriaVH());
+//        viewHelperMap.put("/reservas", new ReservaVH());
+//        viewHelperMap.put("/quartos", new QuartoVH());
+//        viewHelperMap.put("/categorias", new CategoriaVH());
     }
     
     @Override
@@ -51,8 +55,8 @@ public class Servlet extends HttpServlet {
             throws ServletException, IOException {
         System.out.println("\n=================================");
         
-        // Retorna o caminho sem a parte da aplicação ou da servlet (http://localhost:8080/ReservasPousada/Servlet/reservas -> /reservas)
-        String caminho = request.getPathInfo(); 
+        // Retorna o caminho com o contexto da aplicação e o mapeamento da servlet (http://localhost:8080/ReservasPousada/Servlet/reservas -> /ReservasPousada/Servlet/reservas)
+        String caminho = request.getRequestURI(); 
 
         // Retorna a operação desejada (salvar, excluir, alterar ou consultar)
         String operacao = request.getParameter("operacao");
@@ -67,7 +71,7 @@ public class Servlet extends HttpServlet {
         
         // Caminho não maepado (não encontrado em viewHelperMap)
         if (viewHelper == null) {
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND); // HTTP 404
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Caminho inválido!"); // HTTP 404
             System.out.println("==== viewHelper nao encontrado para o caminho " + caminho);
             System.out.println("=================================\n");
             return;
@@ -83,7 +87,7 @@ public class Servlet extends HttpServlet {
         
         // Operação não suportada (não encontrada em commandMap)
         if (command == null) {
-            response.setStatus(422); // HTTP 422: Entidade improcessável (Sintaxe correta porém dados inválidos (operação inválida))
+            response.sendError(422, "Operação inválida!"); // HTTP 422: Entidade improcessável (Sintaxe correta porém dados inválidos (operação inválida))
             System.out.println("==== command nao encontrado para o caminho " + caminho);
             System.out.println("=================================\n");
             return;
