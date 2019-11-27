@@ -27,7 +27,7 @@ public class EnderecoDAO extends AbstractDAO {
     }
 
     @Override
-    public void salvar(EntidadeDominio entidade) {
+    public long salvar(EntidadeDominio entidade) {
         System.out.println("--> EnderecoDAO#salvar " + entidade.toString());
         Endereco endereco = (Endereco) entidade;
         abrirConexao();
@@ -45,11 +45,17 @@ public class EnderecoDAO extends AbstractDAO {
             
             System.out.println(ps);
             ps.executeUpdate();
+            
+            // Retorna o ID para ser utilizado em chaves estrangeiras ao salvar em outros DAOs
+            ResultSet rs = ps.getGeneratedKeys();
+            rs.next();
+            return rs.getLong(1);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             fecharConexao();
         }
+        return -1L;
     }
 
     @Override
@@ -104,11 +110,23 @@ public class EnderecoDAO extends AbstractDAO {
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
-                Endereco enderecoConsultado = new Endereco(rs.getString("bairro"), rs.getString("logradouro"), rs.getString("numero"), rs.getString("complemento"), rs.getString("cep"), new Cidade(rs.getString("cidade"), new Estado(rs.getString("estado"))));
+                Endereco enderecoConsultado = new Endereco(
+                        rs.getString("bairro"), 
+                        rs.getString("logradouro"), 
+                        rs.getString("numero"), 
+                        rs.getString("complemento"), 
+                        rs.getString("cep"), 
+                        new Cidade(
+                                rs.getString("cidade"), 
+                                new Estado(
+                                        rs.getString("estado")
+                                )
+                        )
+                );
                 enderecoConsultado.setId(rs.getLong(colunaId));
+                
                 enderecosConsultados.add(enderecoConsultado);
             }
-            
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

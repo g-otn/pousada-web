@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface IDAO {
 
-    public void salvar(EntidadeDominio entidadeDominio);
+    public long salvar(EntidadeDominio entidadeDominio);
 
     public void alterar(EntidadeDominio entidadeDominio);
 

@@ -26,7 +26,7 @@ public class CartaoDAO extends AbstractDAO {
     }
 
     @Override
-    public void salvar(EntidadeDominio entidade) {
+    public long salvar(EntidadeDominio entidade) {
         System.out.println("--> CartaoDAO#salvar " + entidade.toString());
         Cartao cartao = (Cartao) entidade;
         abrirConexao();
@@ -43,11 +43,17 @@ public class CartaoDAO extends AbstractDAO {
             
             System.out.println(ps);
             ps.executeUpdate();
+            
+            // Retorna o ID para ser utilizado em chaves estrangeiras ao salvar em outros DAOs
+            ResultSet rs = ps.getGeneratedKeys();
+            rs.next();
+            return rs.getLong(1);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             fecharConexao();
         }
+        return -1L;
     }
 
     @Override
@@ -107,9 +113,9 @@ public class CartaoDAO extends AbstractDAO {
                         rs.getString("codigo_seguranca")
                 );
                 cartaoConsultado.setId(rs.getLong(colunaId));
+                
                 cartoesConsultados.add(cartaoConsultado);
             }
-            
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

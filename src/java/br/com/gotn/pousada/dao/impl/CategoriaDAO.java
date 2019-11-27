@@ -24,7 +24,7 @@ public class CategoriaDAO extends AbstractDAO {
     }
 
     @Override
-    public void salvar(EntidadeDominio entidade) {
+    public long salvar(EntidadeDominio entidade) {
         System.out.println("--> CategoriaDAO#salvar " + entidade.toString());
         Categoria categoria = (Categoria) entidade;
         abrirConexao();
@@ -40,11 +40,17 @@ public class CategoriaDAO extends AbstractDAO {
             
             System.out.println(ps);
             ps.executeUpdate();
+            
+            // Retorna o ID para ser utilizado em chaves estrangeiras ao salvar em outros DAOs
+            ResultSet rs = ps.getGeneratedKeys();
+            rs.next();
+            return rs.getLong(1);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             fecharConexao();
         }
+        return -1L;
     }
 
     @Override
@@ -105,8 +111,13 @@ public class CategoriaDAO extends AbstractDAO {
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
-                Categoria categoriaConsultada = new Categoria(rs.getString("descricao"), rs.getDouble("preco_diaria"), rs.getInt("capacidade"));
+                Categoria categoriaConsultada = new Categoria(
+                        rs.getString("descricao"), 
+                        rs.getDouble("preco_diaria"), 
+                        rs.getInt("capacidade")
+                );
                 categoriaConsultada.setId(rs.getLong(colunaId));
+                
                 categoriasConsultadas.add(categoriaConsultada);
             }
         } catch (SQLException e) {

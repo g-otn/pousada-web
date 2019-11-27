@@ -25,7 +25,7 @@ public class QuartoDAO extends AbstractDAO {
     }
     
     @Override
-    public void salvar(EntidadeDominio entidade) {
+    public long salvar(EntidadeDominio entidade) {
         System.out.println("--> QuartoDAO#salvar " + entidade.toString());
         Quarto quarto = (Quarto) entidade;
         abrirConexao();
@@ -40,11 +40,17 @@ public class QuartoDAO extends AbstractDAO {
             
             System.out.println(ps);
             ps.executeUpdate();
+            
+            // Retorna o ID para ser utilizado em chaves estrangeiras ao salvar em outros DAOs
+            ResultSet rs = ps.getGeneratedKeys();
+            rs.next();
+            return rs.getLong(1);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             fecharConexao();
         }
+        return -1L;
     }
 
     @Override
@@ -104,8 +110,13 @@ public class QuartoDAO extends AbstractDAO {
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
-                Quarto quartoConsultado = new Quarto(rs.getString("numero"), new Categoria(rs.getLong("categoria_id")));
+                Quarto quartoConsultado = new Quarto(
+                        rs.getString("numero"),
+                        (Categoria) categoriaDAO.consultar(new Categoria(rs.getLong("categoria_id"))).get(0)
+                );
+                quartoConsultado.getCategoria().setId(rs.getLong("categoria_id"));
                 quartoConsultado.setId(rs.getLong(colunaId));
+                
                 quartosConsultados.add(quartoConsultado);
             }
             
