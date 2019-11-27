@@ -41,6 +41,9 @@ public class Fachada implements IFachada {
     private Resultado resultado;
 
     public Fachada() {
+        daoMap = new HashMap<>();
+        regrasNegocio = new HashMap<>();
+        
         // Mapeando cada entidade para seu respectivo DAO
         daoMap.put(Reserva.class.getName(), new ReservaDAO());
         daoMap.put(Quarto.class.getName(), new QuartoDAO());
