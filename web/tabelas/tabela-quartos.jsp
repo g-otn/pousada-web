@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -6,22 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>Pousada | Categorias</title>
+  <title>Pousada | Quartos</title>
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="../vendors/admin-lte/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/vendors/admin-lte/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../vendors/admin-lte/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/vendors/admin-lte/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- DataTables -->
-  <link rel="stylesheet" href="../vendors/admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/vendors/admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
   <!-- Toastr -->
-  <link rel="stylesheet" href="../vendors/admin-lte/plugins/toastr/toastr.min.css">
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/vendors/admin-lte/plugins/toastr/toastr.min.css">
 
   <!-- Estilos da página -->
-  <link rel="stylesheet" href="../css/tabelas.css">
-  <link rel="stylesheet" href="../css/tabela-categorias.css">
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/css/tabelas.css">
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/css/tabela-quartos.css">
 </head>
 
 <body class="hold-transition sidebar-mini sidebar-collapse">
@@ -41,7 +42,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="../vendors/admin-lte/index3.html" class="brand-link text-center">
+      <a href="<%= request.getContextPath() %>/vendors/admin-lte/index3.html" class="brand-link text-center">
         <span class="brand-text text-xl">
           <i class="fas fa-hotel"></i>&nbsp&nbspPousada
         </span>
@@ -53,9 +54,9 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+                   with font-awesome or any other icon font library -->
             <li class="nav-item has-treeview menu-open">
-              <a href="/reservas" class="nav-link active">
+              <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                   Reservas
@@ -64,13 +65,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/reservas/nova" class="nav-link active">
+                  <a href="<%= request.getContextPath() %>/reservas/novo" class="nav-link active">
                     <i class="fas fa-plus nav-icon"></i>
                     <p>Nova Reserva</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/reservas" class="nav-link">
+                  <a href="<%= request.getContextPath() %>/reservas" class="nav-link">
                     <i class="fas fa-list nav-icon"></i>
                     <p>Todas as Reservas</p>
                   </a>
@@ -78,7 +79,7 @@
               </ul>
             </li>
             <li class="nav-item has-treeview">
-              <a href="/quartos" class="nav-link">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-bed"></i>
                 <p>
                   Quartos
@@ -87,13 +88,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/quartos/novo" class="nav-link">
+                  <a href="<%= request.getContextPath() %>/quartos/novo" class="nav-link">
                     <i class="fas fa-plus nav-icon"></i>
                     <p>Novo Quarto</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/quartos" class="nav-link">
+                  <a href="<%= request.getContextPath() %>/quartos" class="nav-link">
                     <i class="fas fa-list nav-icon"></i>
                     <p>Todas os Quartos</p>
                   </a>
@@ -101,7 +102,7 @@
               </ul>
             </li>
             <li class="nav-item has-treeview">
-              <a href="/categorias" class="nav-link">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tags"></i>
                 <p>
                   Categorias
@@ -110,13 +111,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/categorias/novo" class="nav-link">
+                  <a href="<%= request.getContextPath() %>/categorias/novo" class="nav-link">
                     <i class="fas fa-plus nav-icon"></i>
                     <p>Nova Categoria</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/categorias" class="nav-link">
+                  <a href="<%= request.getContextPath() %>/categorias" class="nav-link">
                     <i class="fas fa-list nav-icon"></i>
                     <p>Todos as Categorias</p>
                   </a>
@@ -136,7 +137,7 @@
       <!-- Main content -->
       <div class="content">
         <div class="container-fluid">
-          <h1 class="pt-3 mb-4 text-dark text-center">Categorias</h1>
+          <h1 class="pt-3 mb-4 text-dark text-center">Quartos</h1>
           <div class="card">
             <div class="card-body">
               <!-- /.card-header -->
@@ -145,9 +146,8 @@
                   <thead>
                     <tr>
                       <th>Excluir</th>
-                      <th>Descrição</th>
-                      <th>Preço da Diária</th>
-                      <th>Capacidade</th>
+                      <th>Número</th>
+                      <th>Categoria</th>
                       <th>Editar</th>
                     </tr>
                   </thead>
@@ -159,7 +159,6 @@
                       </td>
                       <td>A Trid6sz ru66u6sent</td>
                       <td>2 real</td>
-                      <td>124 pessoas</td>
                       <td class="item_icone">
                         <a href="editar?id=0"><i class="nav-icon fas fa-edit text-warning text-lg"></i></a>
                       </td>
@@ -170,9 +169,7 @@
                             class="nav-icon fas fa-trash text-danger text-lg"></i></a>
                       </td>
                       <td>TB rid6su66u6yh. ydcfc cu.cuyt.cuty.sent</td>
-                      <td>R$ 253,00
-                      </td>
-                      <td>5 PESSOAS</td>
+                      <td><a href="<%= request.getContextPath() %>/categorias?categoria=5 PESSOAS">5 PESSOAS</a></td>
                       <td class="item_icone">
                         <a href="editar?id=1"><i class="nav-icon fas fa-edit text-warning text-lg"></i></a>
                       </td>
@@ -183,8 +180,6 @@
                             class="nav-icon fas fa-trash text-danger text-lg"></i></a>
                       </td>
                       <td>F Tri atrj56446j kssent</td>
-                      <td> GI
-                      </td>
                       <td>I Wi5nxy kyfg kxy 95+</td>
                       <td class="item_icone">
                         <a href="editar?id=1"><i class="nav-icon fas fa-edit text-warning text-lg"></i></a>
@@ -205,7 +200,7 @@
     <!-- Main Footer -->
     <footer class="main-footer">
       <!-- Default to the left -->
-      <strong>Gabriel Otani - <a href="#">GitHub</a></strong>
+      <strong>Gabriel Otani - <a href="https://github.com/g-otn/pousada-web">GitHub</a></strong>
     </footer>
   </div>
   <!-- ./wrapper -->
@@ -235,17 +230,19 @@
   <!-- REQUIRED SCRIPTS -->
 
   <!-- jQuery -->
-  <script src="../vendors/admin-lte/plugins/jquery/jquery.min.js"></script>
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
-  <script src="../vendors/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- DataTables -->
-  <script src="../vendors/admin-lte/plugins/datatables/jquery.dataTables.js"></script>
-  <script src="../vendors/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/datatables/jquery.dataTables.js"></script>
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+  <!-- Toastr -->
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/toastr/toastr.min.js"></script>
   <!-- AdminLTE App -->
-  <script src="../vendors/admin-lte/dist/js/adminlte.min.js"></script>
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/dist/js/adminlte.min.js"></script>
 
   <!-- JavaScripts da Página -->
-  <script src="../js/tabelas.js"></script>
+  <script src="<%= request.getContextPath() %>/js/tabelas.js"></script>
 
   <!-- Aplicações iniciais dos plugins jQuery -->
   <script>
@@ -254,7 +251,7 @@
       $('#tabelaCategorias').DataTable({
         columnDefs: [
           {
-            targets: [0, 4], // Colunas de: [Editar, Excluir]
+            targets: [0, 3], // Colunas de: [Editar, Excluir]
             searchable: false,
             orderable: false
           }
@@ -263,12 +260,6 @@
         // Internacionalização Português-Brasil - https://datatables.net/plug-ins/i18n/Portuguese-Brasil
         language: { "sEmptyTable": "Nenhum registro encontrado", "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros", "sInfoEmpty": "Mostrando 0 até 0 de 0 registros", "sInfoFiltered": "(Filtrados de _MAX_ registros)", "sInfoPostFix": "", "sInfoThousands": ".", "sLengthMenu": "_MENU_ resultados por página", "sLoadingRecords": "Carregando...", "sProcessing": "Processando...", "sZeroRecords": "Nenhum registro encontrado", "sSearch": "Pesquisar", "oPaginate": { "sNext": "Próximo", "sPrevious": "Anterior", "sFirst": "Primeiro", "sLast": "Último" }, "oAria": { "sSortAscending": ": Ordenar colunas de forma ascendente", "sSortDescending": ": Ordenar colunas de forma descendente" }, "select": { "rows": { "0": "Nenhuma linha selecionada", "1": "Selecionado 1 linha", "_": "Selecionado %d linhas" } } }
       });
-
-      // Filtra a tabela pela categoria vinda da URL
-      $('input[type=search]').val(new URL(window.location.href).searchParams.get('categoria'))
-      $('input[type=search]').trigger('search')
-
-      $('input[type=search]').focus()
 
       toastr.options = {
         closeButton: true,
