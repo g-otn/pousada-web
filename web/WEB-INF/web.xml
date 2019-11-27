@@ -10,6 +10,9 @@
         <url-pattern>/categorias/*</url-pattern>
         <url-pattern>/quartos/*</url-pattern>
     </servlet-mapping>
+    <error-page>
+        <location>/erros/erro.jsp</location>
+    </error-page>
     <session-config>
         <session-timeout>
             30
