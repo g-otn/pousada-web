@@ -17,6 +17,8 @@ public class CategoriaVH implements IViewHelper {
         String operacao = request.getParameter("operacao");
         System.out.println("operacao: " + operacao);
         
+        System.out.println("preco:" + request.getParameter("precoDiaria"));
+        
         if (operacao == null) operacao = "consultar"; // Para poder realizar consulta utilizando o menu
 
         // *****************************************************************************************
