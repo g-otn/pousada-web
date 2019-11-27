@@ -208,7 +208,7 @@
     <!-- Main Footer -->
     <footer class="main-footer">
       <!-- Default to the left -->
-      <strong>Gabriel Otani - <a href="#">GitHub</a></strong>
+      <strong>Gabriel Otani - <a href="https://github.com/g-otn/pousada-web">GitHub</a></strong>
     </footer>
   </div>
   <!-- ./wrapper -->
