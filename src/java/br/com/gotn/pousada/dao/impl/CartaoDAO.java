@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -42,7 +43,7 @@ public class CartaoDAO extends AbstractDAO {
             ps.setString(4, cartao.getCodigoSeguranca());
             
             System.out.println(ps);
-            ps.executeUpdate();
+            ps.executeUpdate(ps.toString(), Statement.RETURN_GENERATED_KEYS);
             
             // Retorna o ID para ser utilizado em chaves estrangeiras ao salvar em outros DAOs
             ResultSet rs = ps.getGeneratedKeys();
