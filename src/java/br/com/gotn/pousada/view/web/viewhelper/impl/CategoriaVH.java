@@ -149,9 +149,9 @@ public class CategoriaVH implements IViewHelper {
                 response.sendRedirect(request.getContextPath() + "/categorias");
             } else if (operacao.equals("consultar")) {
                 if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
-                    response.sendRedirect(request.getContextPath() + "/categorias");
-                } else {
                     request.getRequestDispatcher("/tabelas/tabela-categorias.jsp").forward(request, response);
+                } else {
+                    response.sendRedirect(request.getContextPath() + "/categorias/novo");
                 }
             }
         } catch (ServletException | IOException e) {

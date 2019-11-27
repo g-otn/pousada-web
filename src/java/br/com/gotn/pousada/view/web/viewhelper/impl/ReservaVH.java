@@ -290,9 +290,9 @@ public class ReservaVH implements IViewHelper {
                 response.sendRedirect(request.getContextPath() + "/reservas");
             } else if (operacao.equals("consultar")) {
                 if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
-                    response.sendRedirect(request.getContextPath() + "/reservas");
-                } else {
                     request.getRequestDispatcher("/tabelas/tabela-reservas.jsp").forward(request, response);
+                } else {
+                    response.sendRedirect(request.getContextPath() + "/reservas/novo");
                 }
             }
         } catch (ServletException | IOException e) {
