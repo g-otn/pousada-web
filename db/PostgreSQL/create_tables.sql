@@ -10,7 +10,7 @@ CREATE TABLE pousada.quartos
 (
     id bigserial PRIMARY KEY,
     numero character varying(10) NOT NULL,
-    categoria_id bigint REFERENCES pousada.categorias (id)
+    categoria_id bigint NOT NULL REFERENCES pousada.categorias (id)
 );
 
 CREATE TABLE pousada.cartoes
@@ -40,8 +40,8 @@ CREATE TABLE pousada.pagantes
     cpf character(11) NOT NULL,
     email character varying(150) NOT NULL,
     telefone character varying(15) NOT NULL,
-    endereco_id bigint REFERENCES pousada.pagantes(id),
-    cartao_id bigint REFERENCES pousada.cartoes(id)    
+    endereco_id bigint NOT NULL REFERENCES pousada.pagantes(id),
+    cartao_id bigint NOT NULL REFERENCES pousada.cartoes(id)    
 );
 
 CREATE TABLE pousada.reservas
@@ -51,5 +51,5 @@ CREATE TABLE pousada.reservas
     data_check_out timestamp without time zone NOT NULL,
     observacoes text,
     pessoas character varying(150)[],
-    pagante_id bigint REFERENCES pousada.pagantes(id)
+    pagante_id bigint NOT NULL REFERENCES pousada.pagantes(id)
 );
