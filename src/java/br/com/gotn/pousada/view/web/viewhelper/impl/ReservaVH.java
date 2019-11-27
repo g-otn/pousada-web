@@ -31,9 +31,7 @@ public class ReservaVH implements IViewHelper {
         String operacao = request.getParameter("operacao");
         System.out.println("operacao: " + operacao);
 
-        if (operacao == null) {
-            return null;
-        }
+        if (operacao == null) operacao = "consultar"; // Para poder realizar consulta utilizando o menu
 
         // *****************************************************************************************
         
