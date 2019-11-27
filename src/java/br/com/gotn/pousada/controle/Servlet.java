@@ -127,7 +127,7 @@ public class Servlet extends HttpServlet {
         
         // Retorna o resultado da entidade que foi executada e processada
         Resultado resultado = command.executar(entidade);
-        System.out.println("==== Resultado: " + resultado.getEntidades().size() + " entidades, " + resultado.getMensagens().split("\n").length + " mensagens" );
+        System.out.println("==== Resultado: " + (resultado.getEntidades() != null ? resultado.getEntidades().size() : "null") + " entidades, " + (resultado.getMensagens() != null ? resultado.getMensagens().split("\n").length : "null") + " mensagens" );
         
         // Envia o resultado para a viewHelper que continuará o tratamento da requisição e enviará uma resposta
         viewHelper.setView(resultado, request, response);

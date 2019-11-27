@@ -208,11 +208,6 @@ public class Fachada implements IFachada {
         resultado = new Resultado();
         String nomeClasse = entidade.getClass().getName();
         
-        Map<String, List<IStrategy>> regrasNegocioEntidade = regrasNegocio.get(nomeClasse);
-        List<IStrategy> regrasNegocioOperacao = regrasNegocioEntidade.get("excluir");
-        
-        executarRegras(entidade, regrasNegocioOperacao);
-        
         IDAO dao = daoMap.get(nomeClasse);
         dao.excluir(entidade);
         
@@ -227,11 +222,6 @@ public class Fachada implements IFachada {
         System.out.println("--> Fachada#consultar");
         resultado = new Resultado();
         String nomeClasse = entidade.getClass().getName();
-        
-        Map<String, List<IStrategy>> regrasNegocioEntidade = regrasNegocio.get(nomeClasse);
-        List<IStrategy> regrasNegocioOperacao = regrasNegocioEntidade.get("consultar");
-        
-        executarRegras(entidade, regrasNegocioOperacao);
         
         IDAO dao = daoMap.get(nomeClasse);
         for (EntidadeDominio entidadeConsultada : dao.consultar(entidade)) {
