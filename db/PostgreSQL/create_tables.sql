@@ -44,12 +44,6 @@ CREATE TABLE pousada.pagantes
     cartao_id bigint REFERENCES pousada.cartoes(id)    
 );
 
-CREATE TABLE pousada.pessoas
-(
-    id bigserial PRIMARY KEY,
-    nome character varying(150) NOT NULL    
-);
-
 CREATE TABLE pousada.reservas
 (
     id bigserial PRIMARY KEY,
@@ -59,9 +53,9 @@ CREATE TABLE pousada.reservas
     pagante_id bigint REFERENCES pousada.pagantes(id)
 );
 
-CREATE TABLE pousada.reservas_pessoas
+CREATE TABLE pousada.pessoas
 (
-    reserva_id bigint REFERENCES pousada.reservas(id),
-    pessoa_id bigint REFERENCES pousada.pessoas(id),
-    PRIMARY KEY(reserva_id, pessoa_id)
+    id bigserial PRIMARY KEY,
+    nome character varying(150) NOT NULL,
+    reserva_id bigint REFERENCES pousada.reservas(id)
 );
