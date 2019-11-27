@@ -55,10 +55,10 @@ public class CategoriaDAO extends AbstractDAO {
 
         try {
             PreparedStatement ps = conexao.prepareStatement("UPDATE " + tabela + " SET "
-                + "descricao = ?,"
-                + "capacidade = ?,"
-                + "preco_diaria = ?"
-                + " WHERE " + colunaId + " = ?"
+                + "descricao = ?, "
+                + "capacidade = ?, "
+                + "preco_diaria = ? "
+                + "WHERE " + colunaId + " = ?"
             );
             ps.setString(1, categoria.getDescricao());
             ps.setInt(2, categoria.getCapacidade());

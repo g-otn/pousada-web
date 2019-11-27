@@ -55,9 +55,9 @@ public class QuartoDAO extends AbstractDAO {
         
         try {
             PreparedStatement ps = conexao.prepareStatement("UPDATE " + tabela + " SET "
-                + "numero = ?,"
-                + "categoria_id = ?"
-                + " WHERE " + colunaId + " = ?"
+                + "numero = ?, "
+                + "categoria_id = ? "
+                + "WHERE " + colunaId + " = ?"
             );
             ps.setString(1, quarto.getNumero());
             ps.setLong(2, quarto.getCategoria().getId());
