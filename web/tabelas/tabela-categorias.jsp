@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -42,7 +43,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="<%= request.getContextPath() %>/vendors/admin-lte/index3.html" class="brand-link text-center">
+      <a href="<%= request.getContextPath() %>" class="brand-link text-center">
         <span class="brand-text text-xl">
           <i class="fas fa-hotel"></i>&nbsp&nbspPousada
         </span>
@@ -153,44 +154,20 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td class="item_icone">
-                        <a href="#modalExcluir" data-id="1" data-toggle="modal" data-target="#modalExcluir"><i
-                            class="nav-icon fas fa-trash text-danger text-lg"></i></a>
-                      </td>
-                      <td>A Trid6sz ru66u6sent</td>
-                      <td>2 real</td>
-                      <td>124 pessoas</td>
-                      <td class="item_icone">
-                        <a href="editar?id=0"><i class="nav-icon fas fa-edit text-warning text-lg"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="item_icone">
-                        <a href="#modalExcluir" data-id="2" data-toggle="modal" data-target="#modalExcluir"><i
-                            class="nav-icon fas fa-trash text-danger text-lg"></i></a>
-                      </td>
-                      <td>TB rid6su66u6yh. ydcfc cu.cuyt.cuty.sent</td>
-                      <td>R$ 253,00
-                      </td>
-                      <td>5 PESSOAS</td>
-                      <td class="item_icone">
-                        <a href="editar?id=1"><i class="nav-icon fas fa-edit text-warning text-lg"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="item_icone">
-                        <a href="#modalExcluir" data-id="3" data-toggle="modal" data-target="#modalExcluir"><i
-                            class="nav-icon fas fa-trash text-danger text-lg"></i></a>
-                      </td>
-                      <td>F Tri atrj56446j kssent</td>
-                      <td> GI
-                      </td>
-                      <td>I Wi5nxy kyfg kxy 95+</td>
-                      <td class="item_icone">
-                        <a href="editar?id=1"><i class="nav-icon fas fa-edit text-warning text-lg"></i></a>
-                      </td>
-                    </tr>
+                    <c:forEach items="${resultado.entidades}" var="categoria">
+                        <tr>
+                          <td class="item_icone">
+                            <a href="#modalExcluir" data-id="${categoria.id}" data-toggle="modal" data-target="#modalExcluir"><i
+                                class="nav-icon fas fa-trash text-danger text-lg"></i></a>
+                          </td>
+                          <td>${categoria.descricao}</td>
+                          <td>R$ ${categoria.precoDiaria}</td>
+                          <td>${categoria.capacidade} pessoas</td>
+                          <td class="item_icone">
+                            <a href="editar?id=${categoria.id}"><i class="nav-icon fas fa-edit text-warning text-lg"></i></a>
+                          </td>
+                        </tr>
+                    </c:forEach>
                   </tbody>
                 </table>
               </div>
