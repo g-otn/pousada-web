@@ -270,6 +270,8 @@ public class ReservaVH implements IViewHelper {
         
         if (operacao == null) operacao = "consultar"; // Para poder realizar consulta utilizando o menu
         
+        request.setAttribute("resultado", resultado);
+        
         try {
             if (operacao.equals("salvar")) {
                 if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
