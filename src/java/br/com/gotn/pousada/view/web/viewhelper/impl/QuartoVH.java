@@ -16,7 +16,7 @@ public class QuartoVH implements IViewHelper {
         String operacao = request.getParameter("operacao");
         System.out.println("operacao: " + operacao);
         
-        if (operacao == null) operacao = "consultar";
+        if (operacao == null) operacao = "consultar"; // Para poder realizar consulta utilizando o menu
 
         // *****************************************************************************************
         
