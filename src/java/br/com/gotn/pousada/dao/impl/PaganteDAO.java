@@ -132,7 +132,7 @@ public class PaganteDAO extends AbstractDAO {
                                 rs.getString("email"), 
                                 rs.getString("telefone"),
                                 (Endereco) enderecoDAO.consultar(new Endereco(rs.getLong("endereco_id"))).get(0),
-                                (Cartao) enderecoDAO.consultar(new Cartao(rs.getLong("cartao_id"))).get(0)
+                                (Cartao) cartaoDAO.consultar(new Cartao(rs.getLong("cartao_id"))).get(0)
                         );
                 paganteConsultado.getEndereco().setId(rs.getLong("endereco_id"));
                 paganteConsultado.getCartao().setId(rs.getLong("cartao_id"));

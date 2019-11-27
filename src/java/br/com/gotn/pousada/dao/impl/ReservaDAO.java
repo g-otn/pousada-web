@@ -23,6 +23,7 @@ public class ReservaDAO extends AbstractDAO {
     @Override
     public long salvar(EntidadeDominio entidade) {
         System.out.println("--> ReservaDAO#salvar " + entidade.toString());
+        
         return -2L;
     }
 
