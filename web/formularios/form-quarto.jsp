@@ -151,7 +151,7 @@
           <div class="card">
             <div class="card-body">
               <!-- <form action="alterar" method="POST"> -->
-              <form action="salvar" method="POST">
+              <form action="<%= request.getContextPath() %>?operacao=<%= request.getParameter("operacao") %>" method="POST">
                 <div class="row mb-2">
 
                   <div class="col-sm-3">
@@ -188,7 +188,7 @@
                 <div class="row mt-2">
 
                   <div class="col-sm-6">
-                    <button type="submit" formaction="/categorias"
+                    <button type="submit" formaction="<%= request.getContextPath() %>" formmethod="GET"
                       class="btn btn-block btn-outline-danger">Voltar</button>
                   </div><!-- /.col -->
 

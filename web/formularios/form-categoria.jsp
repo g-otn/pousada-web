@@ -190,7 +190,7 @@
 
                 <div class="row mt-2">
                   <div class="col-sm-6">
-                    <button type="submit" formaction="/categorias"
+                    <button type="submit" formaction="<%= request.getContextPath() %>" formmethod="GET" 
                       class="btn btn-block btn-outline-danger">Voltar</button>
                   </div><!-- /.col -->
                   <div class="col-sm-6">

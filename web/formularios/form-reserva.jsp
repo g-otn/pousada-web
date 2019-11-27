@@ -146,7 +146,7 @@
 
           <h1 class="pt-3 mb-4 text-dark text-center">Nova Reserva</h1>
           <div class="card card-light">
-            <form action="<%= request.getContextPath() %>?operacao=salvar" method="POST">
+            <form action="<%= request.getContextPath() %>?operacao=<%= request.getParameter("operacao") %>" method="POST">
               <div class="card-body">
                 <div class="row">
 
@@ -535,7 +535,9 @@
                 <div class="row">
 
                   <div class="col-md-4">
-                    <button type="submit" class="btn btn-danger w-100">Voltar</button>
+                    <button type="submit" formaction="<%= request.getContextPath() %>" formmethod="GET" class="btn btn-danger w-100">
+                      Voltar
+                    </button>
                   </div>
                   <div class="col-md-4">
                   </div>
