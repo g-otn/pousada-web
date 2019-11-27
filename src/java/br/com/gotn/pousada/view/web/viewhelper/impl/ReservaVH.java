@@ -264,6 +264,49 @@ public class ReservaVH implements IViewHelper {
     @Override
     public void setView(Resultado resultado, HttpServletRequest request, HttpServletResponse response) {
         System.out.println("--> ReservaVH#setView");
+        String operacao = request.getParameter("operacao");
+        
+        if (operacao == null) operacao = "consultar"; // Para poder realizar consulta utilizando o menu
+
+        // *****************************************************************************************
+        
+        if (operacao.equals("salvar")) {
+            if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
+                
+            } else {
+                
+            }
+        }
+
+        // *****************************************************************************************
+        
+        if (operacao.equals("alterar")) {
+            if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
+                
+            } else {
+                
+            }
+        }
+
+        // *****************************************************************************************
+        
+        if (operacao.equals("excluir")) {
+            if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
+                
+            } else {
+                
+            }
+        }
+
+        // *****************************************************************************************
+        
+        if (operacao.equals("consultar")) {
+            if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
+                
+            } else {
+                
+            }
+        }
     }
 
 }

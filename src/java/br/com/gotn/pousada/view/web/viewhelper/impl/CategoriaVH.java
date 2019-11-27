@@ -123,6 +123,34 @@ public class CategoriaVH implements IViewHelper {
     @Override
     public void setView(Resultado resultado, HttpServletRequest request, HttpServletResponse response) {
         System.out.println("--> CategoriaVH#setView");
+        String operacao = request.getParameter("operacao");
+        
+        if (operacao == null) operacao = "consultar"; // Para poder realizar consulta utilizando o menu
+
+        // *****************************************************************************************
+        
+        if (operacao.equals("salvar")) {
+            if (resultado.getMensagens() == null || resultado.getMensagens().isEmpty()) {
+                
+            } else {
+                
+            }
+        }
+
+        // *****************************************************************************************
+        
+        if (operacao.equals("alterar")) {
+        }
+
+        // *****************************************************************************************
+        
+        if (operacao.equals("excluir")) {
+        }
+
+        // *****************************************************************************************
+        
+        if (operacao.equals("consultar")) {
+        }
     }
     
 }
