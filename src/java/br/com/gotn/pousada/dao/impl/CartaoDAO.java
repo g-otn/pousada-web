@@ -27,7 +27,7 @@ public class CartaoDAO extends AbstractDAO {
 
     @Override
     public void salvar(EntidadeDominio entidade) {
-        System.out.println("--> CartaoDAO#salvar");
+        System.out.println("--> CartaoDAO#salvar " + entidade.toString());
         Cartao cartao = (Cartao) entidade;
         abrirConexao();
 
@@ -52,7 +52,7 @@ public class CartaoDAO extends AbstractDAO {
 
     @Override
     public void alterar(EntidadeDominio entidade) {
-        System.out.println("--> CartaoDAO#alterar");
+        System.out.println("--> CartaoDAO#alterar " + entidade.toString());
         Cartao cartao = (Cartao) entidade;
         abrirConexao();
         
@@ -80,7 +80,7 @@ public class CartaoDAO extends AbstractDAO {
 
     @Override
     public List<EntidadeDominio> consultar(EntidadeDominio entidade) {
-        System.out.println("--> CartaoDAO#consultar");
+        System.out.println("--> CartaoDAO#consultar " + entidade.toString());
         Cartao cartao = (Cartao) entidade;
         abrirConexao();
         
