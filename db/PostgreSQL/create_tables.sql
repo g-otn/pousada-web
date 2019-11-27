@@ -50,6 +50,6 @@ CREATE TABLE pousada.reservas
     data_check_in timestamp without time zone NOT NULL,
     data_check_out timestamp without time zone NOT NULL,
     observacoes text,
-    pessoas character varying(150)[] NOT NULL,
+    pessoas character varying(150)[],
     pagante_id bigint REFERENCES pousada.pagantes(id)
 );
