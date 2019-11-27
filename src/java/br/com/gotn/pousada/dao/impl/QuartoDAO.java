@@ -40,10 +40,11 @@ public class QuartoDAO extends AbstractDAO {
             ps.setLong(2, quarto.getCategoria().getId());
             
             System.out.println(ps);
-            ps.executeUpdate(ps.toString(), Statement.RETURN_GENERATED_KEYS);
+            Statement st = conexao.createStatement();
+            st.executeUpdate(ps.toString(), Statement.RETURN_GENERATED_KEYS);
             
             // Retorna o ID para ser utilizado em chaves estrangeiras ao salvar em outros DAOs
-            ResultSet rs = ps.getGeneratedKeys();
+            ResultSet rs = st.getGeneratedKeys();
             rs.next();
             return rs.getLong(1);
         } catch (SQLException e) {
