@@ -113,7 +113,7 @@ public class PaganteDAO extends AbstractDAO {
         try {
             PreparedStatement ps;
             
-            if (pagante.getId() != -1L) { // id -> consulta de cartao único
+            if (pagante.getId() != -1L) { // id -> consulta de pagante único
                 ps = conexao.prepareStatement("SELECT * FROM " + tabela + " WHERE id = ? ");
                 ps.setLong(1, pagante.getId());
             } else { // nada -> listagem
