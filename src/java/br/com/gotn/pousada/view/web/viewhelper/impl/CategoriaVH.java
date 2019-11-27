@@ -28,7 +28,7 @@ public class CategoriaVH implements IViewHelper {
             // Categoria.precoDiaria
             double precoDiaria;
             try {
-                precoDiaria = Double.parseDouble("precoDiaria");
+                precoDiaria = Double.parseDouble(request.getParameter("precoDiaria"));
             } catch (NumberFormatException e) {
                 precoDiaria = -1.0;
             }
@@ -36,7 +36,7 @@ public class CategoriaVH implements IViewHelper {
             // Categoria.capacidade
             int capacidade;
             try {
-                capacidade = Integer.parseInt("capacidade");
+                capacidade = Integer.parseInt(request.getParameter("capacidade"));
             } catch (NumberFormatException e) {
                 capacidade = -1;
             }
@@ -135,14 +135,14 @@ public class CategoriaVH implements IViewHelper {
                     request.setAttribute("sucesso", true);
                     response.sendRedirect(request.getContextPath() + "/categorias");
                 } else {
-                    request.getRequestDispatcher("/formularios/form-categorias.jsp").forward(request, response);
+                    request.getRequestDispatcher("/formularios/form-categoria.jsp").forward(request, response);
                 }
             } else if (operacao.equals("alterar")) {
                 if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
                     request.setAttribute("sucesso", true);
                     response.sendRedirect(request.getContextPath() + "/categorias");
                 } else {
-                    request.getRequestDispatcher("/formularios/form-categorias.jsp").forward(request, response);
+                    request.getRequestDispatcher("/formularios/form-categoria.jsp").forward(request, response);
                 }
             } else if (operacao.equals("excluir")) {
                 request.setAttribute("sucesso", true);

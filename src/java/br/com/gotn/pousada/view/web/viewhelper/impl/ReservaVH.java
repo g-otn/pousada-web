@@ -276,14 +276,14 @@ public class ReservaVH implements IViewHelper {
                     request.setAttribute("sucesso", true);
                     response.sendRedirect(request.getContextPath() + "/reservas");
                 } else {
-                    request.getRequestDispatcher("/formularios/form-reservas.jsp").forward(request, response);
+                    request.getRequestDispatcher("/formularios/form-reserva.jsp").forward(request, response);
                 }
             } else if (operacao.equals("alterar")) {
                 if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
                     request.setAttribute("sucesso", true);
                     response.sendRedirect(request.getContextPath() + "/reservas");
                 } else {
-                    request.getRequestDispatcher("/formularios/form-reservas.jsp").forward(request, response);
+                    request.getRequestDispatcher("/formularios/form-reserva.jsp").forward(request, response);
                 }
             } else if (operacao.equals("excluir")) {
                 request.setAttribute("sucesso", true);
