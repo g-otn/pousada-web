@@ -16,14 +16,14 @@ public abstract class AbstractDAO implements IDAO {
 
     // Utilizado pelos DAOs quando o mesmo é instânciado com o construtor sem parâmetros (direto da Fachada/Strategy)
     public AbstractDAO(String tabela, String colunaId) {
-        this.tabela = BD_ESQUEMA + tabela;
+        this.tabela = BD_ESQUEMA + "." + tabela;
         this.colunaId = colunaId;
     }
 
     // Recebe uma conexão já aberta, para quando um DAO chamar o outro
     public AbstractDAO(Connection conexao, String tabela, String colunaId) {
         this.conexao = conexao;
-        this.tabela = BD_ESQUEMA + tabela;
+        this.tabela = BD_ESQUEMA + "." + tabela;
         this.colunaId = colunaId;
     }
 
