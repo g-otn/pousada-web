@@ -1,7 +1,5 @@
 package br.com.gotn.pousada.dao.impl;
 
-import br.com.gotn.pousada.dominio.Cartao;
-import br.com.gotn.pousada.dominio.Endereco;
 import br.com.gotn.pousada.dominio.EntidadeDominio;
 import br.com.gotn.pousada.dominio.Pagante;
 import br.com.gotn.pousada.dominio.Pessoa;
@@ -39,6 +37,8 @@ public class ReservaDAO extends AbstractDAO {
         PaganteDAO paganteDAO = new PaganteDAO(conexao);
 
         try {
+            ;
+            
             PreparedStatement ps = conexao.prepareStatement("INSERT INTO " + tabela
                 + " (data_check_in, data_check_out, observacoes, pessoas, pagante_id)"
                 + " VALUES (?, ?, ?, ?, ?)"
@@ -46,7 +46,7 @@ public class ReservaDAO extends AbstractDAO {
             ps.setObject(1, reserva.getDataCheckIn());
             ps.setObject(2, reserva.getDataCheckOut());
             ps.setString(3, reserva.getObservacoes());
-            ps.setArray(4, reserva.getPessoas().toArray(new Pessoa[reserva.getPessoas().size()]));
+            ps.setArray(4, conexao.createArrayOf("varchar[]", reserva.getPessoas().toArray()));
             ps.setLong(5, paganteDAO.salvar(reserva.getPagante()));
             
             System.out.println(ps);
@@ -86,8 +86,8 @@ public class ReservaDAO extends AbstractDAO {
             ps.setObject(1, reserva.getDataCheckIn());
             ps.setObject(2, reserva.getDataCheckOut());
             ps.setString(3, reserva.getObservacoes());
-            ps.setArray(4, reserva.getPessoas().toArray(new Pessoa[reserva.getPessoas().size()]));
-            ps.setLong(5, reserva.getPagante().getId());
+            ps.setArray(4, conexao.createArrayOf("varchar[]", reserva.getPessoas().toArray()));
+            ps.setLong(5, paganteDAO.salvar(reserva.getPagante()));
             
             System.out.println(ps);
             ps.executeUpdate();
@@ -129,15 +129,22 @@ public class ReservaDAO extends AbstractDAO {
             System.out.println(ps);
             ResultSet rs = ps.executeQuery();
             
-            while (rs.next()) {                
+            while (rs.next()) {
+                // Recupera todas as pessoas que pertecem a esta reserva
+                List<Pessoa> pessoasReserva = new ArrayList<Pessoa>();
+                for (Object object : Arrays.asList(rs.getArray("pessoas"))) {
+                    pessoasReserva.add(new Pessoa(((Pessoa) object).getNome()));
+                }
+                
+                
                 Reserva reservaConsultada = 
                         new Reserva(
                                 rs.getObject("data_check_in", LocalDateTime.class), 
                                 rs.getObject("data_check_out", LocalDateTime.class),
                                 rs.getString("observacoes"), 
-                                Arrays.asList(rs.getArray("pessoas")), 
-                                paganteDAO.consultar(new Pagante(rs.getLong("pagante_id"))),
-                                quartoDAO.consultar(new Quarto(-1L))
+                                pessoasReserva, 
+                                (Pagante) paganteDAO.consultar(new Pagante(rs.getLong("pagante_id"))).get(0),
+                                null
                         );
                 reservaConsultada.getPagante().setId(rs.getLong("pagante_id"));
                 reservaConsultada.setId(rs.getLong(colunaId));
