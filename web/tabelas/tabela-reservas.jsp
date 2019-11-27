@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -41,7 +42,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="<%= request.getContextPath() %>/vendors/admin-lte/index3.html" class="brand-link text-center">
+      <a href="<%= request.getContextPath() %>" class="brand-link text-center">
         <span class="brand-text text-xl">
           <i class="fas fa-hotel"></i>&nbsp&nbspPousada
         </span>
