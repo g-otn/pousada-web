@@ -38,6 +38,7 @@ public class Servlet extends HttpServlet {
         commandMap.put("alterar", new AlterarCommand());
         commandMap.put("excluir", new ExcluirCommand());
         commandMap.put("consultar", new ConsultarCommand());
+        commandMap.put(null, new ConsultarCommand());
         
         // *****************************************************************************************
         
@@ -48,6 +49,34 @@ public class Servlet extends HttpServlet {
 //        viewHelperMap.put("/reservas", new ReservaVH());
 //        viewHelperMap.put("/quartos", new QuartoVH());
 //        viewHelperMap.put("/categorias", new CategoriaVH());
+    }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        System.out.println("doGet " + request.getRequestURL() + " | " + request.getParameter("operacao"));
+        
+        
+        // Simplesmente redireciona para o formulário;
+        switch (request.getRequestURI()) {
+            case "/" + CONTEXTO + "/reservas/novo":
+                request.getRequestDispatcher("/formularios/form-reserva.jsp").forward(request, response);
+                return;
+            case "/" + CONTEXTO + "/quartos/novo":
+                request.getRequestDispatcher("/formularios/form-quarto.jsp").forward(request, response);
+                return;
+            case "/" + CONTEXTO + "/categorias/novo":
+                request.getRequestDispatcher("/formularios/form-categoria.jsp").forward(request, response);
+                return;
+            case "/" + CONTEXTO + "/reservas":
+            case "/" + CONTEXTO + "/quartos":
+            case "/" + CONTEXTO + "/categorias":
+                doPost(request, response);
+                return;
+            default:
+                request.getRequestDispatcher("/formularios/form-reserva.jsp").forward(request, response);
+                return;
+        }
     }
     
     @Override

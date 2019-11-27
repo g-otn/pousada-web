@@ -36,7 +36,7 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
-<body class="hold-transition sidebar-mini sidebar-collapse">
+<body class="hold-transition sidebar-mini">
   <div class="wrapper">
 
     <!-- Navbar -->
@@ -53,7 +53,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="../vendors/admin-lte/index3.html" class="brand-link text-center">
+      <a href="#" class="brand-link text-center">
         <span class="brand-text text-xl">
           <i class="fas fa-hotel"></i>&nbsp&nbspPousada
         </span>
@@ -65,9 +65,9 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+                 with font-awesome or any other icon font library -->
             <li class="nav-item has-treeview menu-open">
-              <a href="/reservas" class="nav-link active">
+              <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                   Reservas
@@ -76,13 +76,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/reservas/nova" class="nav-link active">
+                  <a href="<%= request.getContextPath() %>/reservas/novo" class="nav-link active">
                     <i class="fas fa-plus nav-icon"></i>
                     <p>Nova Reserva</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/reservas" class="nav-link">
+                  <a href="<%= request.getContextPath() %>/reservas" class="nav-link">
                     <i class="fas fa-list nav-icon"></i>
                     <p>Todas as Reservas</p>
                   </a>
@@ -90,7 +90,7 @@
               </ul>
             </li>
             <li class="nav-item has-treeview">
-              <a href="/quartos" class="nav-link">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-bed"></i>
                 <p>
                   Quartos
@@ -99,13 +99,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/quartos/novo" class="nav-link">
+                  <a href="<%= request.getContextPath() %>/quartos/novo" class="nav-link">
                     <i class="fas fa-plus nav-icon"></i>
                     <p>Novo Quarto</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/quartos" class="nav-link">
+                  <a href="<%= request.getContextPath() %>/quartos" class="nav-link">
                     <i class="fas fa-list nav-icon"></i>
                     <p>Todas os Quartos</p>
                   </a>
@@ -113,7 +113,7 @@
               </ul>
             </li>
             <li class="nav-item has-treeview">
-              <a href="/categorias" class="nav-link">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tags"></i>
                 <p>
                   Categorias
@@ -122,13 +122,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/categorias/novo" class="nav-link">
+                  <a href="<%= request.getContextPath() %>/categorias/novo" class="nav-link">
                     <i class="fas fa-plus nav-icon"></i>
                     <p>Nova Categoria</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/categorias" class="nav-link">
+                  <a href="<%= request.getContextPath() %>/categorias" class="nav-link">
                     <i class="fas fa-list nav-icon"></i>
                     <p>Todos as Categorias</p>
                   </a>
@@ -158,6 +158,10 @@
       <!-- Main content -->
       <div class="content">
         <div class="container-fluid">
+          <div class="text-center">
+            <h1>Pousada Web</h1>
+            <h2>Controle de Reservas</h2>
+          </div>
         </div>
       </div>
     </div>

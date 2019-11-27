@@ -10,23 +10,26 @@
   <title>Pousada | Nova Reserva</title>
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="../vendors/admin-lte/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet"
-    href="../vendors/admin-lte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    href="<%= request.getContextPath() %>/vendors/admin-lte/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet"
+    href="<%= request.getContextPath() %>/vendors/admin-lte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../vendors/admin-lte/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/vendors/admin-lte/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- daterange picker -->
-  <link rel="stylesheet" href="../vendors/admin-lte/plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet"
+    href="<%= request.getContextPath() %>/vendors/admin-lte/plugins/daterangepicker/daterangepicker.css">
   <!-- Select2 -->
-  <link rel="stylesheet" href="../vendors/admin-lte/plugins/select2/css/select2.min.css">
-  <link rel="stylesheet" href="../vendors/admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/vendors/admin-lte/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet"
+    href="<%= request.getContextPath() %>/vendors/admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <!-- Toastr -->
-  <link rel="stylesheet" href="../vendors/admin-lte/plugins/toastr/toastr.min.css">
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/vendors/admin-lte/plugins/toastr/toastr.min.css">
 
   <!-- Estilos da página -->
-  <link rel="stylesheet" href="../css/tabelas.css">
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/css/tabelas.css">
 </head>
 
 <body class="hold-transition sidebar-mini sidebar-collapse">
@@ -46,7 +49,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="../vendors/admin-lte/index3.html" class="brand-link text-center">
+      <a href="<%= request.getContextPath() %>" class="brand-link text-center">
         <span class="brand-text text-xl">
           <i class="fas fa-hotel"></i>&nbsp&nbspPousada
         </span>
@@ -60,7 +63,7 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item has-treeview menu-open">
-              <a href="/reservas" class="nav-link active">
+              <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                   Reservas
@@ -69,13 +72,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/reservas/nova" class="nav-link active">
+                  <a href="<%= request.getContextPath() %>/reservas/novo" class="nav-link active">
                     <i class="fas fa-plus nav-icon"></i>
                     <p>Nova Reserva</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/reservas" class="nav-link">
+                  <a href="<%= request.getContextPath() %>/reservas" class="nav-link">
                     <i class="fas fa-list nav-icon"></i>
                     <p>Todas as Reservas</p>
                   </a>
@@ -83,7 +86,7 @@
               </ul>
             </li>
             <li class="nav-item has-treeview">
-              <a href="/quartos" class="nav-link">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-bed"></i>
                 <p>
                   Quartos
@@ -92,13 +95,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/quartos/novo" class="nav-link">
+                  <a href="<%= request.getContextPath() %>/quartos/novo" class="nav-link">
                     <i class="fas fa-plus nav-icon"></i>
                     <p>Novo Quarto</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/quartos" class="nav-link">
+                  <a href="<%= request.getContextPath() %>/quartos" class="nav-link">
                     <i class="fas fa-list nav-icon"></i>
                     <p>Todas os Quartos</p>
                   </a>
@@ -106,7 +109,7 @@
               </ul>
             </li>
             <li class="nav-item has-treeview">
-              <a href="/categorias" class="nav-link">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tags"></i>
                 <p>
                   Categorias
@@ -115,13 +118,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/categorias/novo" class="nav-link">
+                  <a href="<%= request.getContextPath() %>/categorias/novo" class="nav-link">
                     <i class="fas fa-plus nav-icon"></i>
                     <p>Nova Categoria</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/categorias" class="nav-link">
+                  <a href="<%= request.getContextPath() %>/categorias" class="nav-link">
                     <i class="fas fa-list nav-icon"></i>
                     <p>Todos as Categorias</p>
                   </a>
@@ -143,7 +146,7 @@
 
           <h1 class="pt-3 mb-4 text-dark text-center">Nova Reserva</h1>
           <div class="card card-light">
-            <form action="salvar" method="POST">
+            <form action="<%= request.getContextPath() %>?operacao=salvar" method="POST">
               <div class="card-body">
                 <div class="row">
 
@@ -281,7 +284,8 @@
                               <label for="paganteRG">RG</label><span class="text-danger text-bold">
                                 *</span>
                               <div class="input-group">
-                                <input id="paganteRG" name="paganteRG" type="text" class="form-control float-right" maxlength="14" required>
+                                <input id="paganteRG" name="paganteRG" type="text" class="form-control float-right"
+                                  maxlength="14" required>
                               </div>
                             </div>
                           </div>
@@ -566,26 +570,28 @@
   <!-- REQUIRED SCRIPTS -->
 
   <!-- jQuery -->
-  <script src="../vendors/admin-lte/plugins/jquery/jquery.min.js"></script>
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
-  <script src="../vendors/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Select2 -->
-  <script src="../vendors/admin-lte/plugins/select2/js/select2.full.min.js"></script>
-  <script src="../vendors/admin-lte/plugins/select2/js/i18n/pt-BR.js"></script>
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/select2/js/select2.full.min.js"></script>
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/select2/js/i18n/pt-BR.js"></script>
   <!-- InputMask -->
-  <script src="../vendors/admin-lte/plugins/moment/moment.min.js"></script>
-  <script src="../vendors/admin-lte/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/moment/moment.min.js"></script>
+  <script
+    src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
   <!-- date-range-picker -->
-  <script src="../vendors/admin-lte/plugins/daterangepicker/daterangepicker.js"></script>
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/daterangepicker/daterangepicker.js"></script>
   <!-- Toastr -->
-  <script src="../vendors/admin-lte/plugins/toastr/toastr.min.js"></script>
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/toastr/toastr.min.js"></script>
   <!-- AdminLTE App -->
-  <script src="../vendors/admin-lte/dist/js/adminlte.min.js"></script>
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/dist/js/adminlte.min.js"></script>
   <!-- InputMask -->
-  <script src="../vendors/admin-lte/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+  <script
+    src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
 
   <!-- JavaScripts da Página -->
-  <script src="../js/form-reserva.js"></script>
+  <script src="<%= request.getContextPath() %>/js/form-reserva.js"></script>
 
   <!-- Aplicações iniciais dos plugins jQuery -->
   <script>
@@ -606,7 +612,7 @@
 
       // Inicialização dos select de quartos
       $.ajax({
-        url: '../quartos/listar',
+        url: '<%= request.getContextPath() %>/quartos/listar',
         error: () => {
           // Inicializa o select com quartos mockados
           $('#quartos').select2({
