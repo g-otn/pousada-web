@@ -134,15 +134,10 @@ public class QuartoVH implements IViewHelper {
                     request.getRequestDispatcher("/formularios/form-quarto.jsp").forward(request, response);
                 }
             } else if (operacao.equals("excluir")) {
-                if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
-                    request.setAttribute("sucesso", true);
-                    response.sendRedirect(request.getContextPath() + "/quartos");
-                } else {
-                    request.getRequestDispatcher("/formularios/form-quarto.jsp").forward(request, response);
-                }
+                request.setAttribute("sucesso", true);
+                response.sendRedirect(request.getContextPath() + "/quartos");
             } else if (operacao.equals("consultar")) {
-                if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
-                    request.setAttribute("sucesso", true);
+                if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
                     response.sendRedirect(request.getContextPath() + "/quartos");
                 } else {
                     request.getRequestDispatcher("/formularios/form-quarto.jsp").forward(request, response);

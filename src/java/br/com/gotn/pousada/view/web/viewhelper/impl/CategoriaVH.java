@@ -145,18 +145,13 @@ public class CategoriaVH implements IViewHelper {
                     request.getRequestDispatcher("/formularios/form-categorias.jsp").forward(request, response);
                 }
             } else if (operacao.equals("excluir")) {
-                if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
-                    request.setAttribute("sucesso", true);
-                    response.sendRedirect(request.getContextPath() + "/categorias");
-                } else {
-                    request.getRequestDispatcher("/formularios/form-categorias.jsp").forward(request, response);
-                }
+                request.setAttribute("sucesso", true);
+                response.sendRedirect(request.getContextPath() + "/categorias");
             } else if (operacao.equals("consultar")) {
-                if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
-                    request.setAttribute("sucesso", true);
+                if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
                     response.sendRedirect(request.getContextPath() + "/categorias");
                 } else {
-                    request.getRequestDispatcher("/formularios/form-categorias.jsp").forward(request, response);
+                    request.getRequestDispatcher("/formularios/form-categoria.jsp").forward(request, response);
                 }
             }
         } catch (ServletException | IOException e) {

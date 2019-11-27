@@ -286,18 +286,13 @@ public class ReservaVH implements IViewHelper {
                     request.getRequestDispatcher("/formularios/form-reservas.jsp").forward(request, response);
                 }
             } else if (operacao.equals("excluir")) {
-                if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
-                    request.setAttribute("sucesso", true);
-                    response.sendRedirect(request.getContextPath() + "/reservas");
-                } else {
-                    request.getRequestDispatcher("/formularios/form-reservas.jsp").forward(request, response);
-                }
+                request.setAttribute("sucesso", true);
+                response.sendRedirect(request.getContextPath() + "/reservas");
             } else if (operacao.equals("consultar")) {
-                if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
-                    request.setAttribute("sucesso", true);
+                if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
                     response.sendRedirect(request.getContextPath() + "/reservas");
                 } else {
-                    request.getRequestDispatcher("/formularios/form-reservas.jsp").forward(request, response);
+                    request.getRequestDispatcher("/formularios/form-reserva.jsp").forward(request, response);
                 }
             }
         } catch (ServletException | IOException e) {
