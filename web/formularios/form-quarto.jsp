@@ -151,7 +151,9 @@
           <div class="card">
             <div class="card-body">
               <!-- <form action="alterar" method="POST"> -->
-              <form action="<%= request.getContextPath() %>?operacao=<%= request.getParameter("operacao") %>" method="POST">
+              <form action="<%= request.getContextPath() %>/quartos" method="POST">
+                <input type="hidden" name="operacao" 
+                value="<%= (request.getAttribute("operacao") == null ? "salvar" : request.getAttribute("operacao")) %>">
                 <div class="row mb-2">
 
                   <div class="col-sm-3">

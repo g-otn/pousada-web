@@ -146,7 +146,9 @@
 
           <h1 class="pt-3 mb-4 text-dark text-center">Nova Reserva</h1>
           <div class="card card-light">
-            <form action="<%= request.getContextPath() %>?operacao=<%= request.getParameter("operacao") %>" method="POST">
+              <form action="<%= request.getContextPath() %>/reservas" method="POST">
+                <input type="hidden" name="operacao" 
+                value="<%= (request.getAttribute("operacao") == null ? "salvar" : request.getAttribute("operacao")) %>">
               <div class="card-body">
                 <div class="row">
 
