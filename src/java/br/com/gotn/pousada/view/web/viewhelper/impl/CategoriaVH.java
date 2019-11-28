@@ -134,8 +134,7 @@ public class CategoriaVH implements IViewHelper {
         try {
             if (operacao.equals("salvar")) {
                 if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
-                    request.setAttribute("sucesso", true);
-                    response.sendRedirect(request.getContextPath() + "/categorias");
+                    response.sendRedirect(request.getContextPath() + "/categorias?aviso=sucesso");
                 } else {
                     request.getRequestDispatcher("/formularios/form-categoria.jsp").forward(request, response);
                 }

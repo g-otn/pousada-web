@@ -255,7 +255,10 @@
         progressBar: true,
         positionClass: "toast-top-center mt-3"
       }
-
+      
+      const urlParams = new URLSearchParams(window.location.search)
+      const aviso = urlParams.get('aviso')
+      if (aviso === 'sucesso') toastr['success']('<h4>Categoria salvo com sucesso!</h4>')
     })
     // $('#precoDiaria').val(2342342322)
   </script>
