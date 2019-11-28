@@ -8,10 +8,15 @@ function exibirErros(data) {
         data = data.split('\n')
     
         console.log(`Exibindo ${data.length} mensagens de erro`)
+        console.log(data)
+        
+        if (data[0] === 'null') return;
+        
         const erros = data.map(linha => {
             if (!linha || !linha.trim()) return
 
             linha = linha.split(':')
+            
             return {
                 elementoCampo: `#${linha[0]}`,
                 elementoMensagemErro: `#${linha[0]}Erro`,

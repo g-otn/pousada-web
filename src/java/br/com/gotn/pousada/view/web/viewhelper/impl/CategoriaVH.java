@@ -29,7 +29,7 @@ public class CategoriaVH implements IViewHelper {
             double precoDiaria;
             try {
                 precoDiaria = Double.parseDouble(request.getParameter("precoDiaria"));
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 precoDiaria = -1.0;
             }
             
@@ -37,7 +37,7 @@ public class CategoriaVH implements IViewHelper {
             int capacidade;
             try {
                 capacidade = Integer.parseInt(request.getParameter("capacidade"));
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 capacidade = -1;
             }
             
@@ -57,7 +57,7 @@ public class CategoriaVH implements IViewHelper {
             double precoDiaria;
             try {
                 precoDiaria = Double.parseDouble(request.getParameter("precoDiaria"));
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 precoDiaria = -1.0;
             }
             
@@ -65,7 +65,7 @@ public class CategoriaVH implements IViewHelper {
             int capacidade;
             try {
                 capacidade = Integer.parseInt(request.getParameter("capacidade"));
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 capacidade = -1;
             }
             
@@ -75,7 +75,7 @@ public class CategoriaVH implements IViewHelper {
             long idCategoria;
             try {
                 idCategoria = Long.parseLong(request.getParameter("idCategoria"));
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 idCategoria = -1L;
             }
             
@@ -149,10 +149,10 @@ public class CategoriaVH implements IViewHelper {
                 request.setAttribute("sucesso", true);
                 response.sendRedirect(request.getContextPath() + "/categorias");
             } else if (operacao.equals("consultar")) {
-                if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
+                if (request.getParameter("idCategoria") == null || request.getParameter("idCategoria").isEmpty()) {
                     request.getRequestDispatcher("/tabelas/tabela-categorias.jsp").forward(request, response);
                 } else {
-                    response.sendRedirect(request.getContextPath() + "/categorias/novo");
+                    request.getRequestDispatcher("/formularios/form-categoria.jsp").forward(request, response);
                 }
             }
         } catch (ServletException | IOException e) {

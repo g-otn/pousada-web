@@ -15,7 +15,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<%= request.getContextPath() %>/vendors/admin-lte/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
   <!-- DataTables -->
   <link rel="stylesheet" href="<%= request.getContextPath() %>/vendors/admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
   <!-- Toastr -->
@@ -164,7 +164,7 @@
                           <td>R$ ${categoria.precoDiaria}</td>
                           <td>${categoria.capacidade} pessoas</td>
                           <td class="item_icone">
-                            <a href="editar?id=${categoria.id}"><i class="nav-icon fas fa-edit text-warning text-lg"></i></a>
+                            <a href="?operacao=consultar&idCategoria=${categoria.id}"><i class="nav-icon fas fa-edit text-warning text-lg"></i></a>
                           </td>
                         </tr>
                     </c:forEach>
@@ -201,9 +201,10 @@
           Deseja realmente excluir a categoria "<span id="modalExcluirDescricaoEntidade" class="text-bold"></span>"?
         </div>
         <div class="modal-footer">
-          <form action="excluir">
+          <form method="POST">
+            <input type="hidden" name="operacao" value="excluir">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-            <button id="modalExcluirBotao" name="id" type="submit" class="btn btn-danger">Excluir</button>
+            <button id="modalExcluirBotao" name="idCategoria" type="submit" class="btn btn-danger">Excluir</button>
           </form>
         </div>
       </div>

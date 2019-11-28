@@ -1,3 +1,5 @@
+<%@page import="br.com.gotn.pousada.dominio.Categoria"%>
+<%@page import="br.com.gotn.pousada.dominio.Resultado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <!DOCTYPE html>
@@ -11,16 +13,16 @@
   <title>Pousada | Nova Categoria</title>
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="../vendors/admin-lte/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/vendors/admin-lte/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../vendors/admin-lte/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/vendors/admin-lte/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
   <!-- Toastr -->
-  <link rel="stylesheet" href="../vendors/admin-lte/plugins/toastr/toastr.min.css">
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/vendors/admin-lte/plugins/toastr/toastr.min.css">
 
   <!-- Estilos da página -->
-  <link href="../css/form-categoria.css" rel="stylesheet">
+  <link href="<%= request.getContextPath() %>/css/form-categoria.css" rel="stylesheet">
 </head>
 
 <body class="hold-transition sidebar-mini sidebar-collapse">
@@ -40,7 +42,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="../vendors/admin-lte/index3.html" class="brand-link text-center">
+      <a href="<%= request.getContextPath() %>" class="brand-link text-center">
         <span class="brand-text text-xl">
           <i class="fas fa-hotel"></i>&nbsp&nbspPousada
         </span>
@@ -150,8 +152,19 @@
             <div class="card-body">
               <!-- <form action="alterar" method="POST"> -->
               <form action="<%= request.getContextPath() %>/categorias" method="POST">
-                <input type="hidden" name="operacao" 
-                value="<%= (request.getAttribute("operacao") == null ? "salvar" : request.getAttribute("operacao")) %>">
+      <%
+          if (request.getAttribute("resultado") != null) {
+              %>
+              <input type="hidden" name="idCategoria" value="<%= ((Resultado) request.getAttribute("resultado")).getEntidades().get(0).getId() %>">
+                <input type="hidden" name="operacao" value="alterar">
+              <%
+          } else {
+              %>
+                <input type="hidden" name="operacao" value="salvar">
+            <%
+          }
+      %>
+                  
                 <label for="descricao" class="mb-0">
                   <h5 class="mt-2 mb-2">Descrição</h5>
                 </label><span class="text-danger text-bold"> *</span>
@@ -161,6 +174,7 @@
                     <span class="input-group-text"><i class="fas fa-tag"></i></span>
                   </div>
                   <input id="descricao" name="descricao" type="text" class="form-control" required>
+                  <span id="descricaoErro" class="text-danger"></span>
                 </div>
 
 
@@ -175,6 +189,7 @@
                         <span class="input-group-text">R$</span>
                       </div>
                       <input id="precoDiaria" name="precoDiaria" type="text" class="form-control" required>
+                    <span id="precoDiariaErro" class="text-danger"></span>
                     </div>
                   </div><!-- /.col -->
 
@@ -187,16 +202,17 @@
                         <span class="input-group-text"><i class="fas fa-users"></i></span>
                       </div>
                       <input id="capacidade" name="capacidade" type="text" class="form-control" required>
+                        <span id="capacidadeErro" class="text-danger"></span>
                     </div>
                   </div><!-- /.col -->
                 </div><!-- /.row -->
 
                 <div class="row mt-2">
                   <div class="col-sm-6">
-                    <button type="submit" formaction="<%= request.getContextPath() %>" formmethod="GET" 
-                      class="btn btn-block btn-outline-danger">Voltar</button>
+<!--                    <button type="submit" formaction="<%= request.getContextPath() %>" formmethod="GET" 
+                      class="btn btn-block btn-outline-danger">Voltar</button>-->
                   </div><!-- /.col -->
-                  <div class="col-sm-6">
+                  <div class="col-sm-12">
                     <button type="submit" class="btn btn-block btn-outline-primary">Cadastrar</button>
                   </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -219,15 +235,18 @@
   <!-- REQUIRED SCRIPTS -->
 
   <!-- jQuery -->
-  <script src="../vendors/admin-lte/plugins/jquery/jquery.min.js"></script>
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
-  <script src="../vendors/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Toastr -->
-  <script src="../vendors/admin-lte/plugins/toastr/toastr.min.js"></script>
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/toastr/toastr.min.js"></script>
   <!-- AdminLTE App -->
-  <script src="../vendors/admin-lte/dist/js/adminlte.min.js"></script>
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/dist/js/adminlte.min.js"></script>
 
-  <script src="../vendors/admin-lte/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+  <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+  
+  
+  <script src="<%= request.getContextPath() %>/js/erros.js"></script>
 
   <!-- Aplicações iniciais dos plugins jQuery -->
   <script>
@@ -249,7 +268,18 @@
         autoUnmask: true,
         removeMaskOnSubmit: true
       });
-      // $('#precoDiaria').val(2342342322)
+      <%
+          if (request.getAttribute("resultado") != null) {
+              Resultado resultado = ((Resultado) request.getAttribute("resultado"));
+              %>
+                exibirErros(`<%= resultado.getMensagens() %>`)
+                $('#precoDiaria').val("<%= ((Categoria)resultado.getEntidades().get(0)).getPrecoDiaria() %>")
+                $('#capacidade').val("<%= ((Categoria)resultado.getEntidades().get(0)).getCapacidade()%>")
+                $('#descricao').val("<%= ((Categoria)resultado.getEntidades().get(0)).getDescricao()%>")
+              <%
+          }
+      %>
+      
 
     })
   </script>

@@ -16,7 +16,7 @@ public class ValidarDescricaoCategoria implements IStrategy {
         
         if (categoria.getDescricao() == null || categoria.getDescricao().trim().isEmpty()) {
             sb.append("descricao: A descrição é obrigatória\n");
-        } else if (categoriaDAO.consultar(entidade).size() > 1) {
+        } else if (categoriaDAO.consultar(entidade).size() > 0) {
             sb.append("descricao: Já existe uma categoria com essa descrição\n");
         }
         

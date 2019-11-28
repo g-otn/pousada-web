@@ -11,13 +11,15 @@
   <title>Pousada | Quartos</title>
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="<%= request.getContextPath() %>/vendors/admin-lte/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet"
+    href="<%= request.getContextPath() %>/vendors/admin-lte/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<%= request.getContextPath() %>/vendors/admin-lte/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
   <!-- DataTables -->
-  <link rel="stylesheet" href="<%= request.getContextPath() %>/vendors/admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+  <link rel="stylesheet"
+    href="<%= request.getContextPath() %>/vendors/admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
   <!-- Toastr -->
   <link rel="stylesheet" href="<%= request.getContextPath() %>/vendors/admin-lte/plugins/toastr/toastr.min.css">
 
@@ -216,10 +218,11 @@
               aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body">
-          Deseja realmente excluir a categoria "<span id="modalExcluirDescricaoEntidade" class="text-bold"></span>"?
+          Deseja realmente excluir o quarto "<span id="modalExcluirDescricaoEntidade" class="text-bold"></span>"?
         </div>
         <div class="modal-footer">
-          <form action="excluir">
+          <form action="" method="POST">
+            <input type="hidden" name="operacao" value="excluir">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
             <button id="modalExcluirBotao" name="id" type="submit" class="btn btn-danger">Excluir</button>
           </form>
@@ -236,7 +239,8 @@
   <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- DataTables -->
   <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/datatables/jquery.dataTables.js"></script>
-  <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+  <script
+    src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
   <!-- Toastr -->
   <script src="<%= request.getContextPath() %>/vendors/admin-lte/plugins/toastr/toastr.min.js"></script>
   <!-- AdminLTE App -->
