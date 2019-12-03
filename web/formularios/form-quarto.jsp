@@ -1,3 +1,5 @@
+<%@page import="br.com.gotn.pousada.dominio.Quarto"%>
+<%@page import="br.com.gotn.pousada.dominio.Resultado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <!DOCTYPE html>
@@ -153,8 +155,18 @@
             <div class="card-body">
               <!-- <form action="alterar" method="POST"> -->
               <form action="<%= request.getContextPath() %>/quartos" method="POST">
-                <input type="hidden" name="operacao" 
-                value="<%= (request.getAttribute("operacao") == null ? "salvar" : request.getAttribute("operacao")) %>">
+      <%
+          if (request.getAttribute("resultado") != null) {
+              %>
+              <input type="hidden" name="idQuarto" value="<%= ((Resultado) request.getAttribute("resultado")).getEntidades().get(0).getId() %>">
+                <input type="hidden" name="operacao" value="alterar">
+              <%
+          } else {
+              %>
+                <input type="hidden" name="operacao" value="salvar">
+            <%
+          }
+      %>
                 <div class="row mb-2">
 
                   <div class="col-sm-3">
@@ -162,10 +174,10 @@
                       <h5 class="mt-2 mb-2">Número</h5>
                     </label><span class="text-danger text-bold"> *</span>
                     <div class="input-group mb-0">
-                      <input id="numero" name="numero" type="text" class="form-control is-invalid" required>
+                      <input id="numero" name="numero" type="text" class="form-control" required>
                       <br>
                     </div>
-                    <p class="text-danger mb-3">Erro1</p>
+                    <p id="numeroErro" class="text-danger mb-3"></p>
                   </div><!-- /.col -->
 
                   <div class="col-sm-9">
@@ -182,7 +194,7 @@
                         <option>Texas</option>
                         <option>Washington</option>
                       </select>
-                      <span class="text-danger">Erro2</span>
+                      <span  id="categoriaErro"  class="text-danger"></span>
                     </div><!-- /.form-group -->
                   </div>
 
@@ -190,13 +202,13 @@
 
                 <div class="row mt-2">
 
-                  <div class="col-sm-6">
+<!--                  <div class="col-sm-6">
                     <button type="submit" formaction="<%= request.getContextPath() %>" formmethod="GET"
                       class="btn btn-block btn-outline-danger">Voltar</button>
-                  </div><!-- /.col -->
+                  </div> /.col -->
 
-                  <div class="col-sm-6">
-                    <button type="submit" class="btn btn-block btn-outline-primary">Cadastrar</button>
+                  <div class="col-sm-12">
+                    <button type="submit" class="btn btn-block btn-outline-primary">Confirmar</button>
                   </div><!-- /.col -->
 
                 </div><!-- /.row -->
@@ -246,8 +258,20 @@
         progressBar: true,
         positionClass: "toast-top-center mt-3"
       }
-
-      toastr['error']('<h4>O formulário contém erros.</h4>Corrija-os e tente novamente.')
+      
+      <%
+          if (request.getAttribute("resultado") != null) {
+              Resultado resultado = ((Resultado) request.getAttribute("resultado"));
+              %>
+                exibirErros(`<%= resultado.getMensagens() %>`)
+                $('#numero').val("<%= ((Quarto)resultado.getEntidades().get(0)).getNumero() %>")
+                $('#categoria').val("<%= ((Quarto)resultado.getEntidades().get(0)).getCategoria().getId() %>")
+              <%
+             if (resultado.getMensagens() != null && !resultado.getMensagens().trim().isEmpty()) {
+                 %> toastr['error']('<h4>O formulário contém erros.</h4>Corrija-os e tente novamente.') <%
+             }
+          }
+      %>
 
 
     })

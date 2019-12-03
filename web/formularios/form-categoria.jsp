@@ -213,7 +213,7 @@
                       class="btn btn-block btn-outline-danger">Voltar</button>-->
                   </div><!-- /.col -->
                   <div class="col-sm-12">
-                    <button type="submit" class="btn btn-block btn-outline-primary">Cadastrar</button>
+                    <button type="submit" class="btn btn-block btn-outline-primary">Confirmar</button>
                   </div><!-- /.col -->
                 </div><!-- /.row -->
               </form>
@@ -268,6 +268,13 @@
         autoUnmask: true,
         removeMaskOnSubmit: true
       });
+
+      toastr.options = {
+        closeButton: true,
+        progressBar: true,
+        positionClass: "toast-top-center mt-3"
+      }
+      
       <%
           if (request.getAttribute("resultado") != null) {
               Resultado resultado = ((Resultado) request.getAttribute("resultado"));
@@ -277,9 +284,11 @@
                 $('#capacidade').val("<%= ((Categoria)resultado.getEntidades().get(0)).getCapacidade()%>")
                 $('#descricao').val("<%= ((Categoria)resultado.getEntidades().get(0)).getDescricao()%>")
               <%
+             if (resultado.getMensagens() != null && !resultado.getMensagens().trim().isEmpty()) {
+                 %> toastr['error']('<h4>O formulário contém erros.</h4>Corrija-os e tente novamente.') <%
+             }
           }
       %>
-      
 
     })
   </script>

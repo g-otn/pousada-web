@@ -136,7 +136,7 @@ public class CategoriaVH implements IViewHelper {
                 if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {
                     response.sendRedirect(request.getContextPath() + "/categorias?aviso=sucesso");
                 } else {
-                    request.getRequestDispatcher("/formularios/form-categoria.jsp").forward(request, response);
+                    request.getRequestDispatcher("/formularios/form-categoria.jsp?aviso=invalido").forward(request, response);
                 }
             } else if (operacao.equals("alterar")) {
                 if (resultado.getMensagens() == null || resultado.getMensagens().trim().isEmpty()) {

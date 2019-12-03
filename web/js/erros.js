@@ -5,7 +5,7 @@ function exibirErros(data) {
 
     $(document).ready(() => {
 
-        data = data.split('\n')
+        data = data.trim().split('\n')
     
         console.log(`Exibindo ${data.length} mensagens de erro`)
         console.log(data)
@@ -27,6 +27,7 @@ function exibirErros(data) {
         console.log('Erros mapeados: ', erros, '\naplicando-os ao DOM')
 
         erros.forEach(erro => {
+            console.log(erro)
             $(erro.elementoCampo).addClass('is-invalid')
             $(erro.elementoMensagemErro).text(erro.mensagem)
         });
